@@ -1,0 +1,16 @@
+<div class="container">
+        <mat-dialog-content>
+             <mat-form-field>
+                <mat-label>Choose a category to play </mat-label>
+                <mat-select [(ngModel)]="selectedCategory">
+                    <mat-option *ngFor="let category of categorys" [value]="category">
+                        {{category.name}}
+                    </mat-option>
+                </mat-select> 
+              </mat-form-field>
+        </mat-dialog-content>
+</div>
+
+<button mat-raised-button color="primary" mat-dialog-close [disabled]="!selectedCategory" [routerLink]="[game?.gameURL,selectedCategory?.id]">
+    play
+</button>
