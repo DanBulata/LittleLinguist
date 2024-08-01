@@ -16,9 +16,9 @@ export class GamesInfoService {
 
   new gameProfile(
     2,
-    "Sort words", 
+    "Word sorter", 
     "list words that fit into particular categories",
-    "sortGame"
+    "wordSorter"
   )
   
   ];

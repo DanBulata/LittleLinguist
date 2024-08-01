@@ -25,6 +25,8 @@ export class SelectGameDialogComponent implements OnInit {
   categorys: Category[] = [];
 selectedCategory: any;
 
+
+
   constructor(private categoriesService: CategoriesService, @Inject(MAT_DIALOG_DATA) public game: gameProfile) { }
 
   
