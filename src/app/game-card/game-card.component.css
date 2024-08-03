@@ -16,8 +16,12 @@
     align-items: center; 
     margin: 10px;
     cursor: pointer;
+    
 } 
 
+mat-card:hover {
+    color:aqua;
+}
 
 
 mat-card-content {
