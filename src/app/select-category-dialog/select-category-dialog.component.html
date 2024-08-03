@@ -13,18 +13,18 @@
 </div>
 
 <!-- CATEGORY DATA -->
- <div *ngIf="selectedCategory">
-    {{selectedCategory?.words.length}} words <br>
+ <div *ngIf="selectedCategory" class="categoryData">
+    {{selectedCategory?.words.length}} words <br><br>
     Last updated:{{selectedCategory?.lastUpdateDate | date : 'short'}} 
 </div>
 
-
-
 <!-- PLAY BUTTON -->
-<button mat-raised-button 
-    color="primary"
-    mat-dialog-close 
-    [disabled]="!selectedCategory"
-    [routerLink]="[game.gameURL,selectedCategory?.id]">
-    play
-</button>
+<div class="platBtn">
+    <button mat-raised-button 
+        color="primary"
+        mat-dialog-close 
+        [disabled]="!selectedCategory"
+        [routerLink]="[game.gameURL,selectedCategory?.id]">
+        play
+    </button>
+</div>

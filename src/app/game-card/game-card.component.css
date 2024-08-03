@@ -1,0 +1,25 @@
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+ mat-card{
+    width : 200px; 
+    height : 200px; 
+    color:white;
+    background-color:#3e50b5;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin: 10px;
+    cursor: pointer;
+} 
+
+
+
+mat-card-content {
+    text-align: center;
+}
