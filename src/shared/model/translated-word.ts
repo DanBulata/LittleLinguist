@@ -1,9 +1,8 @@
 export class TranslatedWord {
-    guess:string;
+    guess: string;
     constructor(
-        public origin : string,
-        public target: string) 
-        {
-            this.guess=""
-        }
+        public origin: string,
+        public target: string) {
+        this.guess = ""
+    }
 }

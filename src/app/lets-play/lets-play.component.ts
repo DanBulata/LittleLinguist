@@ -15,14 +15,14 @@ import { GameCardComponent } from "../game-card/game-card.component";
   styleUrl: './lets-play.component.css',
 })
 
-export class LetsPlayComponent implements OnInit{
-    games: gameProfile[] = [];
+export class LetsPlayComponent implements OnInit {
+  games: gameProfile[] = [];
 
-      constructor (private gamesInfoService:GamesInfoService){}
+  constructor(private gamesInfoService: GamesInfoService) { }
 
-      ngOnInit(): void {
-        this.games=this.gamesInfoService.list()
-       }
+  ngOnInit(): void {
+    this.games = this.gamesInfoService.list()
+  }
 
 
 

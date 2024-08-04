@@ -10,8 +10,8 @@ describe('GameCardComponent', () => {
     await TestBed.configureTestingModule({
       imports: [GameCardComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(GameCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

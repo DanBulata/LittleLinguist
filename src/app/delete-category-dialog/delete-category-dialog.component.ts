@@ -16,5 +16,5 @@ import { MAT_DIALOG_DATA, MatDialogActions, MatDialogClose, MatDialogContent } f
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DeleteCategoryDialogComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public categoryName : string){}
- }
+  constructor(@Inject(MAT_DIALOG_DATA) public categoryName: string) { }
+}

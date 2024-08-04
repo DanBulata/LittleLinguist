@@ -10,12 +10,12 @@ import { WordSorterComponent } from './word-sorter/word-sorter.component';
 
 
 export const routes: Routes = [
-    {path: "", component: DashboardComponent},
-    {path: "admin", component: CategoriesListComponent},
-    {path: "category/:id", component: CategoryFormComponent},
-    {path: "newcategory", component: CategoryFormComponent},
-    {path: "letsPlay", component: LetsPlayComponent},
-    {path: "help", component: HelpSectionComponent},
-    {path: "mixedLetters/:id", component: MixedLettersComponent},
-    {path: "wordSorter/:id", component: WordSorterComponent},
+    { path: "", component: DashboardComponent },
+    { path: "admin", component: CategoriesListComponent },
+    { path: "category/:id", component: CategoryFormComponent },
+    { path: "newcategory", component: CategoryFormComponent },
+    { path: "letsPlay", component: LetsPlayComponent },
+    { path: "help", component: HelpSectionComponent },
+    { path: "mixedLetters/:id", component: MixedLettersComponent },
+    { path: "wordSorter/:id", component: WordSorterComponent },
 ];

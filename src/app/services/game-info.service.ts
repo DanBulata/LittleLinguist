@@ -12,20 +12,20 @@ export class GamesInfoService {
       "Mixed words",
       "Practice spelling, by finding the right order of letters for every word in the category",
       "mixedLetters"
-  ),
+    ),
 
-  new gameProfile(
-    2,
-    "Word sorter", 
-    "list words that fit into particular categories",
-    "wordSorter"
-  )
-  
+    new gameProfile(
+      2,
+      "Word sorter",
+      "list words that fit into particular categories",
+      "wordSorter"
+    )
+
   ];
 
   constructor() { }
 
-  list() : gameProfile[] {
+  list(): gameProfile[] {
     return this.games;
   }
 }

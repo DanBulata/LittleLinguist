@@ -10,8 +10,8 @@ describe('MixedLettersComponent', () => {
     await TestBed.configureTestingModule({
       imports: [MixedLettersComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(MixedLettersComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -1,15 +1,15 @@
 h1 {
-    text-align: center;  
-    margin: 40px; 
-   }
+  text-align: center;
+  margin: 40px;
+}
 
 img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: -30px;
-  }
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -30px;
+}
 
-  .helpSlogen {
-    margin-bottom: 100px;
-  }
+.helpSlogen {
+  margin-bottom: 100px;
+}

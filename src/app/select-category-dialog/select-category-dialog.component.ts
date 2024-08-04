@@ -19,17 +19,17 @@ import { RouterLink, RouterModule } from '@angular/router';
 })
 export class SelectGameDialogComponent implements OnInit {
 
-  
-  
+
+
 
   categorys: Category[] = [];
-selectedCategory: any;
+  selectedCategory: any;
 
 
 
   constructor(private categoriesService: CategoriesService, @Inject(MAT_DIALOG_DATA) public game: gameProfile) { }
 
-  
+
 
   ngOnInit(): void {
     this.categorys = this.categoriesService.list()

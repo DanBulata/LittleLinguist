@@ -1,10 +1,10 @@
 <div class="container">
-   <mat-card appearance="outlined" class="game" *ngFor="let game of games" (click)="openDialog(game)">
+  <mat-card appearance="outlined" class="game" *ngFor="let game of games" (click)="openDialog(game)">
     <div class="cardTitle">
-     <mat-card-title>{{game.gameName}}</mat-card-title>
+      <mat-card-title>{{game.gameName}}</mat-card-title>
     </div>
     <div class="cardContent">
-     <mat-card-content>{{game.gameDescription}}</mat-card-content>
+      <mat-card-content>{{game.gameDescription}}</mat-card-content>
     </div>
-   </mat-card>
- </div>
+  </mat-card>
+</div>

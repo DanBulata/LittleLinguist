@@ -19,7 +19,7 @@ export class GameCardComponent {
 
   dialog = inject(MatDialog)
 
-  openDialog(game : gameProfile): void {
-    const dialogRef = this.dialog.open(SelectGameDialogComponent, { data:game })
+  openDialog(game: gameProfile): void {
+    const dialogRef = this.dialog.open(SelectGameDialogComponent, { data: game })
   }
 }

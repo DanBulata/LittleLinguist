@@ -10,8 +10,8 @@ describe('HelpSectionComponent', () => {
     await TestBed.configureTestingModule({
       imports: [HelpSectionComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(HelpSectionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

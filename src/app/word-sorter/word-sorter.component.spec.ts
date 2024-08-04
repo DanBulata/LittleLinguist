@@ -10,8 +10,8 @@ describe('WordSorterComponent', () => {
     await TestBed.configureTestingModule({
       imports: [WordSorterComponent]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(WordSorterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

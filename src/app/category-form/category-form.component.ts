@@ -16,32 +16,32 @@ import { TranslatedWord } from '../../shared/model/translated-word';
   selector: 'app-category-form',
   standalone: true,
   imports: [
-    CommonModule, 
-    FormsModule, 
-    MatFormFieldModule, 
-    MatInputModule, 
-    MatButtonModule, 
+    CommonModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
     MatIconModule,
     MatTableModule
   ],
   templateUrl: './category-form.component.html',
   styleUrl: './category-form.component.css',
 })
-export class CategoryFormComponent implements OnInit { 
-  currentCategory = new Category(0,"", Language.English, Language.Hebrew);
+export class CategoryFormComponent implements OnInit {
+  currentCategory = new Category(0, "", Language.English, Language.Hebrew);
   displayedColumns: string[] = ["Origin", "Target", "Actions"];
 
   @Input()
-  id? : string;
+  id?: string;
 
-  @ViewChild('wordsGroup') wordsGroup? : NgModelGroup;
+  @ViewChild('wordsGroup') wordsGroup?: NgModelGroup;
 
-  constructor(private categoriesService : CategoriesService,
-    private router : Router){}
+  constructor(private categoriesService: CategoriesService,
+    private router: Router) { }
 
   ngOnInit(): void {
     if (this.id) {
-      let categoryData = this.categoriesService.get(parseInt(this.id)); 
+      let categoryData = this.categoriesService.get(parseInt(this.id));
 
       if (categoryData) {
         this.currentCategory = categoryData;
@@ -50,12 +50,12 @@ export class CategoryFormComponent implements OnInit {
   }
 
   addWord() {
-    this.currentCategory.words = 
-      [...this.currentCategory.words, 
-        new TranslatedWord("", "")];
- }
+    this.currentCategory.words =
+      [...this.currentCategory.words,
+      new TranslatedWord("", "")];
+  }
 
-  deleteWord(index : number) {
+  deleteWord(index: number) {
     let extendedWordsList = Array.from(this.currentCategory.words);
     extendedWordsList.splice(index, 1)
     this.currentCategory.words = extendedWordsList;

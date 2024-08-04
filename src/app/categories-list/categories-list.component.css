@@ -1,9 +1,10 @@
 .add-button-container {
   display: flex;
   justify-content: center;
+  margin-top: 25px;
 }
 
 h1 {
-  text-align: center;  
-  margin: 40px; 
- }
+  text-align: center;
+  margin: 40px;
+}
