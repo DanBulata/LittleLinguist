@@ -1,11 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Category } from '../../shared/model/category';
 import { CategoriesService } from '../services/categories.service';
+import { ExitGameComponent } from "../exit-game/exit-game.component";
 
 @Component({
   selector: 'app-word-sorter',
   standalone: true,
-  imports: [],
+  imports: [ExitGameComponent],
   templateUrl: './word-sorter.component.html',
   styleUrl: './word-sorter.component.css'
 })

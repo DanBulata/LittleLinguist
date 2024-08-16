@@ -1,0 +1,25 @@
+[debug] [2024-08-12T18:26:25.379Z] ----------------------------------------------------------------------
+[debug] [2024-08-12T18:26:25.383Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2024-08-12T18:26:25.383Z] CLI Version:   13.15.1
+[debug] [2024-08-12T18:26:25.383Z] Platform:      win32
+[debug] [2024-08-12T18:26:25.383Z] Node Version:  v20.9.0
+[debug] [2024-08-12T18:26:25.384Z] Time:          Mon Aug 12 2024 21:26:25 GMT+0300 (שעון ישראל (קיץ))
+[debug] [2024-08-12T18:26:25.384Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-08-12T18:26:25.458Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-08-12T18:26:25.458Z] > authorizing via signed-in user (ono.bait2@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\User\OneDrive - OAC - Ono Academic College\לימודים\שנה 2\סמסטר ג\Frontend Project\starter 1.0\frontend-final-project-little-linguist-starter
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+

@@ -1,0 +1,8 @@
+<div mat-dialog-content>
+    Are you sure you want to exit the game?
+</div>
+
+<div mat-dialog-actions>
+    <button cdkFocusInitial color="primary" mat-button (click)="navigateAndClose()">Leave game</button>
+    <button color="primary" mat-button [mat-dialog-close]="false">Keep Playing</button>
+</div>
