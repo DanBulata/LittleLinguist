@@ -1,0 +1,17 @@
+ .coins {
+    float: right;
+    margin-right: 40px;
+}
+
+/* Style the items to be in a row */
+.items {
+    display: flex;
+    align-items: center; /* Aligns items vertically centered */
+}
+
+/* Optional: Add spacing between icon and text */
+.items mat-icon {
+    margin-right: 8px; /* Adjust as needed */
+}
+    
+
