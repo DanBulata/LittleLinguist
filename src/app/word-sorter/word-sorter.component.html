@@ -1,3 +1,15 @@
 <h1>Word Sorter - {{currentCategory?.name}}</h1>
 <app-exit-game></app-exit-game>
 <app-coins></app-coins>
+
+<div class="container">
+    <p>Is word x part of y category?</p>
+    <!-- <button mat-icon-button (click)="openDialog()" >YES</button>
+    <button mat-icon-button (click)="openDialog()">NO WAY</button> -->
+    <button mat-icon-button (click)="openDialog()" isSuccess="true">YES</button>
+    <button mat-icon-button (click)="openDialog()" isSuccess="false">NO WAY</button>
+</div>
+
+
+
+
