@@ -27,6 +27,8 @@ export class WordSorterComponent implements OnInit {
   // isSuccess=true
 
   categoryList: Category[] = [];
+  words? :TranslatedWord[];
+
 
   constructor(private categoriesService: CategoriesService, private dialog: MatDialog) { }
 

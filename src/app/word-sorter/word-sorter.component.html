@@ -2,8 +2,8 @@
 <app-exit-game></app-exit-game>
 <app-coins></app-coins>
 
-<div class="container">
-    <p>Is word x part of y category?</p>
+<div class="container" *ngFor="let word of words; let i = index">
+    <p>Is word {{word.origin}} part of  {{currentCategory?.name}} category?</p>
     <!-- <button mat-icon-button (click)="openDialog()" >YES</button>
     <button mat-icon-button (click)="openDialog()">NO WAY</button> -->
     <button mat-icon-button (click)="openDialog()" isSuccess="true">YES</button>

@@ -1,1 +1,21 @@
 <h1>Mixed Letters - {{currentCategory?.name}}</h1>
+<app-exit-game></app-exit-game>
+<app-coins></app-coins>
+
+  <div class="wordsContainer">
+        <!-- <div class="heOrigin" *ngFor="let word of currentCategory; ">{{currentCategory?.words[index]}}</div>    -->
+        <div class="heOrigin" *ngFor="let word of words; ">{{currentCategory?.words?.[0]}}</div>   
+        <div class="heOrigin" >{{words?.[index]}}</div>   
+        <div class="enRandomWord"></div>
+         <div class="guess">
+            <mat-form-field>
+                <input matInput name="guess" required>
+            </mat-form-field>
+    </div> 
+</div>
+<!-- <div class="buttons"></div>  -->
+
+
+<!-- <div>{{currentCategory?.words}}</div> -->
+
+<!-- {{chosenCategoryWords[0]}} -->
