@@ -16,14 +16,8 @@ export class WinLoseDialogComponent {
     this.isSuccess = data.isSuccess;
   }
 
-   
-  
   nextStep() {
-    // Close the dialog first
     this.dialogRef.close();
-
-   // rest of code... close, nextQuestion, updateProgressBar
-   
   }
 }
 

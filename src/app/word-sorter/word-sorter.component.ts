@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { TranslatedWord } from '../../shared/model/translated-word';
+import { CoinsService } from '../services/coins.service';
 
 interface GameWord {
   origin: string;
@@ -30,7 +31,7 @@ export class WordSorterComponent implements OnInit {
   words: GameWord[] = []
   currentWordIndex: number = 0
 
-  constructor(private categoriesService: CategoriesService, private dialog: MatDialog) { }
+  constructor(private categoriesService: CategoriesService, private dialog: MatDialog, private coinsService: CoinsService) { }
 
   ngOnInit(): void {
     this.currentCategory = this.categoriesService.get(parseInt(this.id));
@@ -77,8 +78,15 @@ export class WordSorterComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(() => {
       this.currentWordIndex++
-      // add coin to coin service
-      // end game
+
+      if (gussedCorrectly) {
+        const addedCoins = Math.floor(100 / this.words.length) 
+        this.coinsService.set(this.coinsService.get() + addedCoins)
+      }
+
+      if (this.currentWordIndex === this.words.length) {
+        // show results screen
+      }
     })
   }
 }
