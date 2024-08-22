@@ -22,7 +22,7 @@ export class WinLoseDialogComponent {
     // Close the dialog first
     this.dialogRef.close();
 
-   // rest of code... close, nextWuestion, updateProgressBar
+   // rest of code... close, nextQuestion, updateProgressBar
    
   }
 }

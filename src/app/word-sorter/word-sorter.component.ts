@@ -10,6 +10,10 @@ import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { TranslatedWord } from '../../shared/model/translated-word';
 
+interface GameWord {
+  origin: string;
+  isInCurrentCategory: boolean;
+}
 
 @Component({
   selector: 'app-word-sorter',
@@ -23,14 +27,10 @@ export class WordSorterComponent implements OnInit {
   @Input()
   id = "";
   currentCategory?: Category;
-  isSuccess: boolean | undefined;
-  // isSuccess=true
-
-  categoryList: Category[] = [];
+  words: GameWord[] = []
+  currentWordIndex: number = 0
 
   constructor(private categoriesService: CategoriesService, private dialog: MatDialog) { }
-
-
 
   ngOnInit(): void {
     this.currentCategory = this.categoriesService.get(parseInt(this.id));
@@ -39,41 +39,48 @@ export class WordSorterComponent implements OnInit {
     let chosenCategoryWords: TranslatedWord[] = this.currentCategory?.words || [];
 
     //שלוש מילים רנדומליות מהקטגוריה שנבחרה על ידי המשתמש
-    let randomwords1: string[] = []
+    let randomwords1: GameWord[] = []
     for (let i = 0; i < 3; i++) {
-      if (chosenCategoryWords.length > 0) {
-        randomwords1.push(chosenCategoryWords[Math.floor(Math.random() * (chosenCategoryWords.length ))].origin)
-      }
+      const word = chosenCategoryWords[Math.floor(Math.random() * (chosenCategoryWords.length))]
+      randomwords1.push({ origin: word.origin, isInCurrentCategory: true })
     }
 
     //רשימת הקטגוריות
-    this.categoryList = this.categoriesService.list();
+    const categoryList = this.categoriesService.list();
 
     //מערך של מילים מקטגוריה רנדומלית
-    let randomCategoryWords = this.categoryList[Math.floor(Math.random() * this.categoryList.length )].words
+    let randomCategoryWords = categoryList[Math.floor(Math.random() * categoryList.length)].words
 
     //שלוש מילים מקטגוריה רנדומלית
-    let randomwords2: string[] = []
+    let randomwords2: GameWord[] = []
     for (let i = 0; i < 3; i++) {
-      if (chosenCategoryWords.length > 0) {
-        randomwords2.push(randomCategoryWords[Math.floor(Math.random() * (randomCategoryWords.length ))].origin)
-      }
+      const word = randomCategoryWords[Math.floor(Math.random() * (randomCategoryWords.length))]
+      randomwords2.push({ origin: word.origin, isInCurrentCategory: false })
     }
 
     //מערך עם שש מילים 
     let combinedArray = randomwords1.concat(randomwords2);    //012345
+
     //מערך עם שש מילים מעורבבות
-    let randomCombinedArray=[];
-    for (let i=0;i<6;i++) {
+    let randomCombinedArray = [];
+    for (let i = 0; i < 6; i++) {
       randomCombinedArray.push(combinedArray[Math.floor(Math.random() * combinedArray.length)])
     }
+
+    this.words = randomCombinedArray
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(WinLoseDialogComponent, { data: { isSuccess: this.isSuccess } })
+  submit(isGuessWordInCurrentCategory: boolean): void {
+    const word = this.words[this.currentWordIndex]
+    const gussedCorrectly = word.isInCurrentCategory === isGuessWordInCurrentCategory
+    const dialogRef = this.dialog.open(WinLoseDialogComponent, { data: { isSuccess: gussedCorrectly } })
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.currentWordIndex++
+      // add coin to coin service
+      // end game
+    })
   }
-
-
 }
 
 
