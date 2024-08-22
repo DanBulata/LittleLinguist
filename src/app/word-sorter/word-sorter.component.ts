@@ -3,13 +3,14 @@ import { Category } from '../../shared/model/category';
 import { CategoriesService } from '../services/categories.service';
 import { ExitGameComponent } from "../exit-game/exit-game.component";
 import { CoinsComponent } from "../coins/coins.component";
-import { ExitDialogComponent } from '../exit-dialog/exit-dialog.component';
 import { WinLoseDialogComponent } from '../win-lose-dialog/win-lose-dialog.component';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { TranslatedWord } from '../../shared/model/translated-word';
 import { CoinsService } from '../services/coins.service';
+import { MatTableModule } from '@angular/material/table';
+import { ResultRow, ResultsTableComponent } from "../results-table/results-table/results-table.component";
 
 interface GameWord {
   origin: string;
@@ -19,7 +20,7 @@ interface GameWord {
 @Component({
   selector: 'app-word-sorter',
   standalone: true,
-  imports: [ExitGameComponent, CoinsComponent, MatIconModule, CommonModule, MatDialogModule],
+  imports: [ExitGameComponent, CoinsComponent, MatIconModule, CommonModule, MatDialogModule, MatTableModule, MatIconModule, ResultsTableComponent, ResultsTableComponent],
   templateUrl: './word-sorter.component.html',
   styleUrl: './word-sorter.component.css'
 })
@@ -31,6 +32,8 @@ export class WordSorterComponent implements OnInit {
   words: GameWord[] = []
   currentWordIndex: number = 0
   guesses: boolean[] = []
+  grade: number = 0
+  results: ResultRow[] = []
 
   constructor(private categoriesService: CategoriesService, private dialog: MatDialog, private coinsService: CoinsService) { }
 
@@ -81,6 +84,9 @@ export class WordSorterComponent implements OnInit {
     }
 
     this.words = randomCombinedArray
+
+    this.results.push({ origin: "dsa", correct: true })
+    this.results.push({ origin: "e3oijiojdsa", correct: false })
   }
 
   submit(isGuessWordInCurrentCategory: boolean): void {
@@ -93,12 +99,18 @@ export class WordSorterComponent implements OnInit {
       this.currentWordIndex++
 
       if (gussedCorrectly) {
-        const addedCoins = Math.floor(100 / this.words.length) 
-        this.coinsService.set(this.coinsService.get() + addedCoins)
+        this.grade += Math.floor(100 / this.words.length)
       }
 
       if (this.currentWordIndex === this.words.length) {
-        // show results screen
+        this.coinsService.set(this.coinsService.get() + this.grade)
+        
+        for (let i = 0; i < this.words.length; i++) {
+          this.results.push({
+            origin: this.words[i].origin,
+            correct: this.guesses[i]
+          })
+        }
       }
     })
   }

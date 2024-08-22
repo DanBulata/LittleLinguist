@@ -1,0 +1,20 @@
+<mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="origin">
+      <mat-header-cell *matHeaderCellDef> Origin </mat-header-cell>
+      <mat-cell *matCellDef="let element;"> {{element.origin}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="correct">
+        <mat-header-cell *matHeaderCellDef> Correct? </mat-header-cell>
+        <mat-cell *matCellDef="let element;">
+            <div *ngIf="element.correct"></div>
+            <ng-template><mat-icon #thenBlock style="color:green;">check</mat-icon></ng-template>
+            <ng-template><mat-icon #elseBlock style="color: red;">close</mat-icon></ng-template> 
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+</mat-table>
