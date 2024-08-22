@@ -2,6 +2,8 @@
 <app-exit-game></app-exit-game>
 <app-coins></app-coins>
 
+<p>Current score: {{this.grade}} / 100</p>
+
 <!-- <div style="display: flex; flex-direction: column;"> -->
 <div class="container" *ngIf="currentWordIndex < words.length">
     <p>Is word {{words[currentWordIndex].origin}} part of {{currentCategory?.name}} category?</p>
