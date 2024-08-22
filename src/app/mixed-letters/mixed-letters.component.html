@@ -1,45 +1,21 @@
 <h1>Mixed Letters - {{currentCategory?.name}}</h1>
-
 <app-exit-game></app-exit-game>
 <app-coins></app-coins>
 
-<!-- <div>Original Word: {{ words[index]?.origin }} </div>  הצגה של המילה המקורית -->
-<!-- <div>Scrambled Word: {{mixWord}}</div>
-
-
-<form>
-    <mat-form-field>
-      <mat-label>Your guess...</mat-label>
-      <input matInput >
-    </mat-form-field>
-</form>
-
-<div class="buttons">
-    <button mat-icon-button (click)="reset()" >reset</button>
-    <button mat-icon-button (click)="submit()" isSuccess="false">Submit</button>
+  <div class="wordsContainer">
+        <!-- <div class="heOrigin" *ngFor="let word of currentCategory; ">{{currentCategory?.words[index]}}</div>    -->
+        <div class="heOrigin" *ngFor="let word of words; ">{{currentCategory?.words?.[0]}}</div>   
+        <div class="heOrigin" >{{words?.[index]}}</div>   
+        <div class="enRandomWord"></div>
+         <div class="guess">
+            <mat-form-field>
+                <input matInput name="guess" required>
+            </mat-form-field>
+    </div> 
 </div>
- -->
-<div *ngIf="!endGame && words&&!isLoading">
-<div >
-    <form #mixGameForm="ngForm" (ngSubmit)="submit()">
-        <div>
-            <div class="r">
-                <h1>Mixed Letters - {{category?.['name'] }}</h1>
-                <div class="mix-game">
-                    <span>{{ words[index]["target"]}}</span>
-                    <span>{{mixWord}} </span>
-                    <mat-form-field>
-                        <mat-label> Guess:</mat-label>
-                        <input matInput [(ngModel)]="words[index]['guess']"name="guess" #guessField="ngModel" required />
-                            requierd />
-                    </mat-form-field>
-                    <div class="button-row">
-                        <button type="button" mat-raised-button color="primary" (click)="reset()">Reset</button>
-                        <button type="submit" mat-raised-button color="primary [disabled]=" mixGameForm="ngForm"
-                            (click)="submit()">Submit </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
+<!-- <div class="buttons"></div>  -->
+
+
+<!-- <div>{{currentCategory?.words}}</div> -->
+
+<!-- {{chosenCategoryWords[0]}} -->
