@@ -30,11 +30,13 @@ export class WordSorterComponent implements OnInit {
   currentCategory?: Category;
   words: GameWord[] = []
   currentWordIndex: number = 0
+  guesses: boolean[] = []
 
   constructor(private categoriesService: CategoriesService, private dialog: MatDialog, private coinsService: CoinsService) { }
 
   ngOnInit(): void {
-    this.currentCategory = this.categoriesService.get(parseInt(this.id));
+    const categoryId = parseInt(this.id)
+    this.currentCategory = this.categoriesService.get(categoryId);
 
     //מערך מילים מהקטגוריה שנבחרה על ידי המשתמש
     let chosenCategoryWords: TranslatedWord[] = this.currentCategory?.words || [];
@@ -42,21 +44,28 @@ export class WordSorterComponent implements OnInit {
     //שלוש מילים רנדומליות מהקטגוריה שנבחרה על ידי המשתמש
     let randomwords1: GameWord[] = []
     for (let i = 0; i < 3; i++) {
-      const word = chosenCategoryWords[Math.floor(Math.random() * (chosenCategoryWords.length))]
+      // כדי לא לבחור באותה מילה פעמיים, יש להוציא את המילה מהאפשרויות
+      const wordIndex = Math.floor(Math.random() * (chosenCategoryWords.length))
+      const word = chosenCategoryWords[wordIndex]
       randomwords1.push({ origin: word.origin, isInCurrentCategory: true })
+      chosenCategoryWords = chosenCategoryWords.slice(0, wordIndex).concat(chosenCategoryWords.slice(wordIndex + 1))
     }
 
     //רשימת הקטגוריות
     const categoryList = this.categoriesService.list();
 
     //מערך של מילים מקטגוריה רנדומלית
-    let randomCategoryWords = categoryList[Math.floor(Math.random() * categoryList.length)].words
+    const filteredCategoryList = this.categoriesService.list().filter(category => category.id !== categoryId)
+    let randomCategoryWords = filteredCategoryList[Math.floor(Math.random() * filteredCategoryList.length)].words
 
     //שלוש מילים מקטגוריה רנדומלית
     let randomwords2: GameWord[] = []
     for (let i = 0; i < 3; i++) {
-      const word = randomCategoryWords[Math.floor(Math.random() * (randomCategoryWords.length))]
+      // כדי לא לבחור באותה מילה פעמיים, יש להוציא את המילה מהאפשרויות
+      const wordIndex = Math.floor(Math.random() * (randomCategoryWords.length))
+      const word = randomCategoryWords[wordIndex]
       randomwords2.push({ origin: word.origin, isInCurrentCategory: false })
+      randomCategoryWords = randomCategoryWords.slice(0, wordIndex).concat(randomCategoryWords.slice(wordIndex + 1))
     }
 
     //מערך עם שש מילים 
@@ -65,7 +74,10 @@ export class WordSorterComponent implements OnInit {
     //מערך עם שש מילים מעורבבות
     let randomCombinedArray = [];
     for (let i = 0; i < 6; i++) {
-      randomCombinedArray.push(combinedArray[Math.floor(Math.random() * combinedArray.length)])
+      const wordIndex = Math.floor(Math.random() * (combinedArray.length))
+      const word = combinedArray[wordIndex]
+      randomCombinedArray.push(word)
+      combinedArray = combinedArray.slice(0, wordIndex).concat(combinedArray.slice(wordIndex + 1))
     }
 
     this.words = randomCombinedArray
@@ -77,6 +89,7 @@ export class WordSorterComponent implements OnInit {
     const dialogRef = this.dialog.open(WinLoseDialogComponent, { data: { isSuccess: gussedCorrectly } })
 
     dialogRef.afterClosed().subscribe(() => {
+      this.guesses.push(gussedCorrectly)
       this.currentWordIndex++
 
       if (gussedCorrectly) {
