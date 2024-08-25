@@ -39,8 +39,14 @@ export class WordSorterComponent implements OnInit {
   constructor(private categoriesService: CategoriesService, private dialog: MatDialog, private coinsService: CoinsService) { }
 
   ngOnInit(): void {
+    this.initGame()
+  }
+
+  initGame(): void {
     const categoryId = parseInt(this.id)
     this.currentCategory = this.categoriesService.get(categoryId);
+    this.currentWordIndex = 0
+    this.grade = 0
 
     //מערך מילים מהקטגוריה שנבחרה על ידי המשתמש
     let chosenCategoryWords: TranslatedWord[] = this.currentCategory?.words || [];
@@ -85,6 +91,10 @@ export class WordSorterComponent implements OnInit {
     }
 
     this.words = randomCombinedArray
+  }
+
+  reset(): void {
+    this.initGame()
   }
 
   submit(isGuessWordInCurrentCategory: boolean): void {
