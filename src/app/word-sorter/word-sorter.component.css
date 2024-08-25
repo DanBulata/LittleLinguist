@@ -10,13 +10,6 @@ h1 {
     gap: 10px;
 }
 
-.progress-container {
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
-    align-items: center;
-}
-
 .progress-number {
     border: 1px solid gray;
     padding: 5px;

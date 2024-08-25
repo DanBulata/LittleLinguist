@@ -1,0 +1,5 @@
+<div class="container">
+    <div class="progress-number">{{currentNumber}}</div>
+    <mat-progress-bar mode="determinate" [value]="(currentNumber / lastNumber) * 100"></mat-progress-bar>
+    <div class="progress-number">{{lastNumber}}</div>
+</div>
