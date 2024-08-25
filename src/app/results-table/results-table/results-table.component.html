@@ -1,20 +1,23 @@
-<mat-table [dataSource]="dataSource">
+<table mat-table [dataSource]="dataSource">
 
     <ng-container matColumnDef="origin">
-      <mat-header-cell *matHeaderCellDef> Origin </mat-header-cell>
-      <mat-cell *matCellDef="let element;"> {{element.origin}}</mat-cell>
+      <th mat-header-cell *matHeaderCellDef> Origin </th>
+      <td mat-cell *matCellDef="let element;"> {{element.origin}}</td>
     </ng-container>
 
     <ng-container matColumnDef="correct">
-        <mat-header-cell *matHeaderCellDef> Correct? </mat-header-cell>
-        <mat-cell *matCellDef="let element;">
-            <div *ngIf="element.correct"></div>
-            <ng-template><mat-icon #thenBlock style="color:green;">check</mat-icon></ng-template>
-            <ng-template><mat-icon #elseBlock style="color: red;">close</mat-icon></ng-template> 
-        </mat-cell>
+        <th mat-header-cell *matHeaderCellDef> Correct? </th>
+        <td mat-cell *matCellDef="let element;">
+            <ng-container *ngIf="element.correct; else wrongIcon">
+                <mat-icon style="color: green">check</mat-icon>
+              </ng-container>
+              <ng-template #wrongIcon>
+                <mat-icon style="color: red">close</mat-icon>
+            </ng-template>
+        </td>
     </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
-</mat-table>
+</table>

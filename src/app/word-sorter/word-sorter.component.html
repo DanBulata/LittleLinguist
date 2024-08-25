@@ -4,14 +4,12 @@
 
 <p>Current score: {{this.grade}} / 100</p>
 
-<!-- <div style="display: flex; flex-direction: column;"> -->
 <div class="container" *ngIf="currentWordIndex < words.length">
     <p>Is word {{words[currentWordIndex].origin}} part of {{currentCategory?.name}} category?</p>
     <button mat-icon-button (click)="submit(true)">YES</button>
     <button mat-icon-button (click)="submit(false)">NO WAY</button>
 </div>
 
-<!-- <div class="container" *ngIf="currentWordIndex >= words.length"> -->
+<div class="container" *ngIf="currentWordIndex >= words.length">
     <app-results-table [dataSource]="results"></app-results-table>
-<!-- </div> -->
-<!-- </div> -->
+</div>

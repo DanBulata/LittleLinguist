@@ -84,12 +84,10 @@ export class WordSorterComponent implements OnInit {
     }
 
     this.words = randomCombinedArray
-
-    this.results.push({ origin: "dsa", correct: true })
-    this.results.push({ origin: "e3oijiojdsa", correct: false })
   }
 
   submit(isGuessWordInCurrentCategory: boolean): void {
+    console.log(this.results)
     const word = this.words[this.currentWordIndex]
     const gussedCorrectly = word.isInCurrentCategory === isGuessWordInCurrentCategory
     const dialogRef = this.dialog.open(WinLoseDialogComponent, { data: { isSuccess: gussedCorrectly } })
@@ -106,7 +104,7 @@ export class WordSorterComponent implements OnInit {
         this.coinsService.set(this.coinsService.get() + this.grade)
         
         for (let i = 0; i < this.words.length; i++) {
-          this.results.push({
+          this.results = this.results.concat({
             origin: this.words[i].origin,
             correct: this.guesses[i]
           })
