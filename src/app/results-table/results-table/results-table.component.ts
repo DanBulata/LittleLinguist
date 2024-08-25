@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 
@@ -16,7 +16,15 @@ export interface ResultRow {
   templateUrl: './results-table.component.html',
   styleUrl: './results-table.component.css'
 })
-export class ResultsTableComponent {
-  displayedColumns: string[] = ['origin', 'correct'];
+export class ResultsTableComponent implements OnInit {
+  displayedColumns: string[] = ['origin', 'target', 'correct'];
   @Input() dataSource: ResultRow[] = [];
+  @Input() showTarget: boolean = true
+
+
+  ngOnInit(): void {
+    if (!this.showTarget) {
+      this.displayedColumns = this.displayedColumns.filter(column => column !== "target")
+    }
+  }
 }
