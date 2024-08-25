@@ -2,20 +2,29 @@
 <app-exit-game></app-exit-game>
 <app-coins></app-coins>
 
-  <div class="wordsContainer">
-        <!-- <div class="heOrigin" *ngFor="let word of currentCategory; ">{{currentCategory?.words[index]}}</div>    -->
-        <div class="heOrigin" *ngFor="let word of words; ">{{currentCategory?.words?.[0]}}</div>   
-        <div class="heOrigin" >{{words?.[index]}}</div>   
-        <div class="enRandomWord"></div>
-         <div class="guess">
-            <mat-form-field>
-                <input matInput name="guess" required>
-            </mat-form-field>
-    </div> 
+<p>Current score: {{this.grade}} / 100</p>
+
+<div class="container" *ngIf="currentWordIndex < words.length">
+    <p>{{ words[currentWordIndex].target }}</p>
+    <p>{{ scrabledWords[currentWordIndex] }}</p>
+    <p>Guess: </p>
+
+    <form #categoryForm="ngForm">
+        <mat-form-field>
+            <input matInput [(ngModel)]="words[currentWordIndex].guess" name="guess" />
+        </mat-form-field>
+    </form>
+
+    <div class="button-group">
+        <button mat-flat-button (click)="resetInput()">Reset</button>
+        <button mat-flat-button (click)="submit()">Submit</button>
+    </div>
+
+    <app-progress-bar [currentNumber]="currentWordIndex" [lastNumber]="words.length" />
 </div>
-<!-- <div class="buttons"></div>  -->
 
 
-<!-- <div>{{currentCategory?.words}}</div> -->
-
-<!-- {{chosenCategoryWords[0]}} -->
+<div class="container" *ngIf="currentWordIndex >= words.length">
+    <app-results-table [dataSource]="results"></app-results-table>
+    <button mat-flat-button (click)="reset()">New Game</button>
+</div>
