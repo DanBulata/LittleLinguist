@@ -13,6 +13,6 @@
 </div>
 
 <div class="container" *ngIf="currentWordIndex >= words.length">
-    <app-results-table [dataSource]="results"></app-results-table>
+    <app-results-table [dataSource]="results" [showTarget]="false"></app-results-table>
     <button mat-flat-button (click)="reset()">New Game</button>
 </div>

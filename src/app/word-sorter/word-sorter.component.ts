@@ -99,7 +99,6 @@ export class WordSorterComponent implements OnInit {
   }
 
   submit(isGuessWordInCurrentCategory: boolean): void {
-    console.log(this.results)
     const word = this.words[this.currentWordIndex]
     const gussedCorrectly = word.isInCurrentCategory === isGuessWordInCurrentCategory
     const dialogRef = this.dialog.open(WinLoseDialogComponent, { data: { isSuccess: gussedCorrectly } })
