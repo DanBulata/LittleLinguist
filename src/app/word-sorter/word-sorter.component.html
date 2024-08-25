@@ -8,6 +8,12 @@
     <p>Is word {{words[currentWordIndex].origin}} part of {{currentCategory?.name}} category?</p>
     <button mat-icon-button (click)="submit(true)">YES</button>
     <button mat-icon-button (click)="submit(false)">NO WAY</button>
+
+    <div class="progress-container">
+        <div class="progress-number">{{currentWordIndex + 1}}</div>
+        <mat-progress-bar mode="determinate" [value]="(currentWordIndex / words.length) * 100"></mat-progress-bar>
+        <div class="progress-number">{{words.length}}</div>
+    </div>
 </div>
 
 <div class="container" *ngIf="currentWordIndex >= words.length">

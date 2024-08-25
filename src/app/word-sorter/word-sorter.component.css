@@ -2,3 +2,22 @@ h1 {
     text-align: center;
     margin-top: 40px;
 }
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: "100%";
+    gap: 10px;
+}
+
+.progress-container {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+}
+
+.progress-number {
+    border: 1px solid gray;
+    padding: 5px;
+}

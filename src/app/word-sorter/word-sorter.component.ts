@@ -11,6 +11,7 @@ import { TranslatedWord } from '../../shared/model/translated-word';
 import { CoinsService } from '../services/coins.service';
 import { MatTableModule } from '@angular/material/table';
 import { ResultRow, ResultsTableComponent } from "../results-table/results-table/results-table.component";
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 interface GameWord {
   origin: string;
@@ -20,7 +21,7 @@ interface GameWord {
 @Component({
   selector: 'app-word-sorter',
   standalone: true,
-  imports: [ExitGameComponent, CoinsComponent, MatIconModule, CommonModule, MatDialogModule, MatTableModule, MatIconModule, ResultsTableComponent, ResultsTableComponent],
+  imports: [ExitGameComponent, CoinsComponent, MatIconModule, CommonModule, MatDialogModule, MatTableModule, MatIconModule, ResultsTableComponent, MatProgressBarModule],
   templateUrl: './word-sorter.component.html',
   styleUrl: './word-sorter.component.css'
 })
