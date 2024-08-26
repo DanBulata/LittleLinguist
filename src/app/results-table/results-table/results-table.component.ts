@@ -20,6 +20,7 @@ export class ResultsTableComponent implements OnInit {
   displayedColumns: string[] = ['origin', 'target', 'correct'];
   @Input() dataSource: ResultRow[] = [];
   @Input() showTarget: boolean = true
+  // @Input ()   grade?: number;
 
 
   ngOnInit(): void {
@@ -27,4 +28,6 @@ export class ResultsTableComponent implements OnInit {
       this.displayedColumns = this.displayedColumns.filter(column => column !== "target")
     }
   }
+
 }
+

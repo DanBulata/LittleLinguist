@@ -109,12 +109,14 @@ export class WordSorterComponent implements OnInit {
 
       if (gussedCorrectly) {
         this.grade += Math.floor(100 / this.words.length)
+        if (this.grade==96) {
+          this.grade+=4}
       }
 
       if (this.currentWordIndex === this.words.length) {
         this.coinsService.set(this.coinsService.get() + this.grade)
-        
-        for (let i = 0; i < this.words.length; i++) {
+        this.results=[];
+        for (let i = 0; i < this.words.length; i++) {    
           this.results = this.results.concat({
             origin: this.words[i].origin,
             correct: this.guesses[i]
@@ -124,6 +126,4 @@ export class WordSorterComponent implements OnInit {
     })
   }
 }
-
-
 
