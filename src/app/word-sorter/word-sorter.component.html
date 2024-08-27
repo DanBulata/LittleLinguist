@@ -5,14 +5,18 @@
 <p>Current score: {{this.grade}} / 100</p>
 
 <div class="container" *ngIf="currentWordIndex < words.length">
-    <p>Is word {{words[currentWordIndex].origin}} part of {{currentCategory?.name}} category?</p>
-    <button mat-icon-button (click)="submit(true)">YES</button>
-    <button mat-icon-button (click)="submit(false)">NO WAY</button>
+    <p>Is word <span class="interpulation">{{words[currentWordIndex].origin}}</span> part of <span class="interpulation">{{currentCategory?.name}} </span>category?</p>
+    <div class="buttons">
+        <button mat-icon-button (click)="submit(true)">YES</button>
+        <button mat-icon-button (click)="submit(false)">NO WAY</button>
+    </div>
 
     <app-progress-bar [currentNumber]="currentWordIndex" [lastNumber]="words.length" />
 </div>
 
 <div class="container" *ngIf="currentWordIndex >= words.length">
     <app-results-table [dataSource]="results" [showTarget]="false"></app-results-table>
-    <button mat-flat-button (click)="reset()">New Game</button>
+    <div class="newGame">
+         <button mat-flat-button (click)="reset()">New Game</button>
+    </div>
 </div>

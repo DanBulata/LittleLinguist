@@ -3,4 +3,24 @@ h1 {
     margin-top: 40px;
 }
 
-.container {}
+.container {
+    text-align: center;
+
+}
+
+button {
+    margin: 15px;
+}
+
+.target {
+    font-weight: 700 ;
+    font-size: x-large;
+}
+
+.origin{
+    margin-bottom: 25px;
+}
+
+.guess{
+    margin-right: 15px;
+}

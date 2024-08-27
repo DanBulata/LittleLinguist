@@ -5,11 +5,12 @@
 <p>Current score: {{this.grade}} / 100</p>
 
 <div class="container" *ngIf="currentWordIndex < words.length">
-    <p>{{ words[currentWordIndex].target }}</p>
-    <p>{{ scrabledWords[currentWordIndex] }}</p>
-    <p>Guess: </p>
+    <p class="target">{{ words[currentWordIndex].target }}</p>
+    <p class="origin">{{ scrabledWords[currentWordIndex] }}</p>
+   
 
-    <form #categoryForm="ngForm">
+   <form #categoryForm="ngForm">
+    <span class="guess">Guess:</span>
         <mat-form-field>
             <input matInput [(ngModel)]="words[currentWordIndex].guess" name="guess" />
         </mat-form-field>

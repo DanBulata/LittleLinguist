@@ -4,3 +4,10 @@
     gap: 15px;
     align-items: center;
 }
+
+.progress-number {
+    border: 1px purple solid;
+    padding: 20px;
+    margin: 30px;
+    background-color: rgb(198, 174, 198);
+}

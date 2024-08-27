@@ -8,9 +8,27 @@ h1 {
     flex-direction: column;
     height: "100%";
     gap: 10px;
+    text-align: center;
 }
 
 .progress-number {
     border: 1px solid gray;
     padding: 5px;
+}
+
+button{
+    width:20%;
+   margin: 15px;
+}
+
+.buttons{
+    text-align: center;
+}
+
+.interpulation {
+    font-weight: bolder;
+}
+
+.newGame{
+    text-align: center;
 }
