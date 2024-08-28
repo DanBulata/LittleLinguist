@@ -26,6 +26,6 @@
 
 
 <div class="container" *ngIf="currentWordIndex >= words.length">
-    <app-results-table [dataSource]="results"></app-results-table>
+    <app-results-table [dataSource]="results" [grade]="grade" [countCorretGuesses]="countCorretGuesses" [words]="words"></app-results-table>
     <button mat-flat-button (click)="reset()">New Game</button>
 </div>

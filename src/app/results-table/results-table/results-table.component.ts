@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
+import { TranslatedWord } from '../../../shared/model/translated-word';
 
 export interface ResultRow {
   origin: string
@@ -20,8 +21,9 @@ export class ResultsTableComponent implements OnInit {
   displayedColumns: string[] = ['origin', 'target', 'correct'];
   @Input() dataSource: ResultRow[] = [];
   @Input() showTarget: boolean = true
-  // @Input ()   grade?: number;
-
+  @Input ()   grade?: number;
+  @Input() countCorretGuesses?:number;
+  @Input() words?: TranslatedWord[];
 
   ngOnInit(): void {
     if (!this.showTarget) {

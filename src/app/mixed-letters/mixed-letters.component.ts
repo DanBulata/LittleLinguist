@@ -47,6 +47,7 @@ export class MixedLettersComponent implements OnInit {
   results: ResultRow[] = [];
   guesses: boolean[] = []; 
   checkGuess: boolean = true; 
+  countCorretGuesses: number = 0;
 
   constructor(
     private categoriesService: CategoriesService,
@@ -60,6 +61,7 @@ export class MixedLettersComponent implements OnInit {
 
   initGame(): void {
     this.grade = 0;
+    this.countCorretGuesses = 0;
     this.currentWordIndex = 0;
     this.guesses = [];
     this.results = [];
@@ -119,6 +121,7 @@ export class MixedLettersComponent implements OnInit {
 
       if (gussedCorrectly) {
         this.grade += Math.floor(100 / this.words.length);
+        this.countCorretGuesses++;
       }
 
 
