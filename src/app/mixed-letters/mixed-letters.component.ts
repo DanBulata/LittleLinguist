@@ -108,7 +108,7 @@ export class MixedLettersComponent implements OnInit {
 
   submit(): void {
     const currentWord = this.words[this.currentWordIndex];
-    const gussedCorrectly = currentWord.origin === currentWord.guess; 
+    const gussedCorrectly = currentWord.origin === currentWord.guess.toLowerCase(); 
     this.guesses.push(gussedCorrectly);
     const dialogRef = this.dialog.open(WinLoseDialogComponent, {
       data: { isSuccess: gussedCorrectly },
