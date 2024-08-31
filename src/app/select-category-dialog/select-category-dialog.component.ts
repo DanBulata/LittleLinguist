@@ -8,7 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
-import { RouterLink, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-select-game-dialog',
@@ -19,18 +19,12 @@ import { RouterLink, RouterModule } from '@angular/router';
 })
 export class SelectGameDialogComponent implements OnInit {
 
-
-
-
   categorys: Category[] = [];
   selectedCategory: any;
 
-
-
   constructor(private categoriesService: CategoriesService, @Inject(MAT_DIALOG_DATA) public game: gameProfile) { }
 
-
-
+  
   ngOnInit(): void {
     this.categorys = this.categoriesService.list()
   }

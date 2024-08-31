@@ -9,7 +9,7 @@ export class GamesInfoService {
   private games: gameProfile[] = [
     new gameProfile(
       1,
-      "Mixed words",
+      "Mixed letters",
       "Practice spelling, by finding the right order of letters for every word in the category",
       "mixedLetters"
     ),

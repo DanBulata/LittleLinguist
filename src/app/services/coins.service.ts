@@ -1,29 +1,29 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
 @Injectable({
-    providedIn: 'root'
-  })
+  providedIn: 'root',
+})
 export class CoinsService {
-    private readonly COINS_KEY = 'coins';
+  private readonly COINS_KEY = 'coins';
 
-    private getCoins(): number {
-        let coins = localStorage.getItem(this.COINS_KEY);
-        if (coins !== null && !isNaN(parseInt(coins, 10))) {
-            return parseInt(coins, 10)
-        }
-
-        return 0
+  private getCoins(): number {
+    let coins = localStorage.getItem(this.COINS_KEY);
+    if (coins !== null && !isNaN(parseInt(coins, 10))) {
+      return parseInt(coins, 10);
     }
 
-    private setCoins(coins: number): void {
-      localStorage.setItem(this.COINS_KEY, coins.toString());
-    }
+    return 0;
+  }
 
-    get() {
-        return this.getCoins()
-    }
+  private setCoins(coins: number): void {
+    localStorage.setItem(this.COINS_KEY, coins.toString());
+  }
 
-    set(coins: number) {
-        this.setCoins(coins)
-    }
+  get() {
+    return this.getCoins();
+  }
+
+  set(coins: number) {
+    this.setCoins(coins);
+  }
 }

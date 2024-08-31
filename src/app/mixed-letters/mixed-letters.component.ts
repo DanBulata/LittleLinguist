@@ -7,7 +7,7 @@ import { TranslatedWord } from '../../shared/model/translated-word';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
-import { MatInput, MatInputModule } from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import {
   ResultRow,
   ResultsTableComponent,
@@ -40,13 +40,12 @@ export class MixedLettersComponent implements OnInit {
   id = '';
   currentCategory?: Category;
   grade: number = 0;
-
   currentWordIndex: number = 0;
   words: TranslatedWord[] = [];
-  scrabledWords: string[] = [];
+  scrambledWords: string[] = [];
   results: ResultRow[] = [];
-  guesses: boolean[] = []; 
-  checkGuess: boolean = true; 
+  guesses: boolean[] = [];
+  checkGuess: boolean = true;
   countCorretGuesses: number = 0;
   numOfTries: number = 0;
 
@@ -66,16 +65,15 @@ export class MixedLettersComponent implements OnInit {
     this.currentWordIndex = 0;
     this.guesses = [];
     this.results = [];
-    this.scrabledWords = [];
-
+    this.scrambledWords = [];
     this.currentCategory = this.categoriesService.get(parseInt(this.id));
     let chosenCategoryWords: TranslatedWord[] =
       this.currentCategory?.words || [];
-
     const wordsMaxLength = chosenCategoryWords.length;
     const randomwords: TranslatedWord[] = [];
+
     for (let i = 0; i < wordsMaxLength; i++) {
-      // כדי לא לבחור באותה מילה פעמיים, יש להוציא את המילה מהאפשרויות
+      // תוספת כדי לא לבחור באותה מילה פעמיים, יש להוציא את המילה מהאפשרויות
       const wordIndex = Math.floor(Math.random() * chosenCategoryWords.length);
       const word = chosenCategoryWords[wordIndex];
       randomwords.push({ ...word, origin: word.origin.toLowerCase() });
@@ -88,14 +86,14 @@ export class MixedLettersComponent implements OnInit {
     this.numOfTries = randomwords.length;
 
     for (const word of this.words) {
-      this.scrabledWords.push(this.scramble(word.origin));
+      this.scrambledWords.push(this.scramble(word.origin));
     }
 
     console.log('words: ', this.words);
-    console.log('s: ', this.scrabledWords);
+    console.log('s: ', this.scrambledWords);
   }
 
-  reset() {
+  resetGame() {
     this.initGame();
   }
 
@@ -112,7 +110,7 @@ export class MixedLettersComponent implements OnInit {
 
   submit(): void {
     const currentWord = this.words[this.currentWordIndex];
-    const gussedCorrectly = currentWord.origin === currentWord.guess.toLowerCase(); 
+    const gussedCorrectly = currentWord.origin === currentWord.guess.toLowerCase();
     this.guesses.push(gussedCorrectly);
     const dialogRef = this.dialog.open(WinLoseDialogComponent, {
       data: { isSuccess: gussedCorrectly },
@@ -126,7 +124,6 @@ export class MixedLettersComponent implements OnInit {
         this.countCorretGuesses++;
       }
 
-
       if (this.currentWordIndex === this.words.length) {
         for (let guess of this.guesses) {
           if (guess == false) {
@@ -137,7 +134,6 @@ export class MixedLettersComponent implements OnInit {
           this.grade = 100;
         }
       }
-
 
       if (this.currentWordIndex === this.words.length) {
         this.coinsService.set(this.coinsService.get() + this.grade);

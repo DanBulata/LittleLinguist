@@ -1,5 +1,3 @@
-
-
 <p *ngIf="isSuccess">Great job!</p>
 <p *ngIf="!isSuccess">Incorrect, give it another try!</p>
 
@@ -8,33 +6,3 @@
     {{ isSuccess ? 'CONTINUE!' : 'GOT IT!' }}
   </button>
 </div>
-
-
-
-<!-- <div class="container" *ngif="isSuccess" >
-    <div mat-dialog-content>
-        Great job!
-    </div>
-    <div mat-dialog-actions>
-        <button cdkFocusInitial color="primary" mat-button [mat-dialog-close]="false" (click)="nextStep()">CONTINUE!</button>
-    </div>
-</div>
-
-<div class="container" *ngif="!isSuccess">
-    <div mat-dialog-content>
-        Incorrect, give it another try!
-    </div>
-    <div mat-dialog-actions>
-        <button cdkFocusInitial color="primary" mat-button  [mat-dialog-close]="false" (click)="nextStep()">GOT IT!</button>
-    </div>
-</div> -->
-
-
-
-
-
-<!-- each Question -->
-<!-- <div mat-dialog-actions> -->
-   <!-- <button cdkFocusInitial color="primary" mat-button (click)="nextStep()">CONTINUE!</button> -->
-     <!-- <button color="primary" mat-button [mat-dialog-close]="false">GOT IT !</button> -->
-<!-- </div> -->

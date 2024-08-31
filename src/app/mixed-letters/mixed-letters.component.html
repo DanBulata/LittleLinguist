@@ -1,31 +1,41 @@
-<h1>Mixed Letters - {{currentCategory?.name}}</h1>
+<h1>Mixed Letters - {{ currentCategory?.name }}</h1>
 <app-exit-game></app-exit-game>
 <app-coins></app-coins>
 
-<p>Current score: {{this.grade}} / 100</p>
+<p>Current score: {{ this.grade }} / 100</p>
 
 <div class="container" *ngIf="currentWordIndex < words.length">
-    <p class="target">{{ words[currentWordIndex].target }}</p>
-    <p class="origin">{{ scrabledWords[currentWordIndex] }}</p>
-   
+  <p class="target">{{ words[currentWordIndex].target }}</p>
+  <p class="origin">{{ scrambledWords[currentWordIndex] }}</p>
 
-   <form #categoryForm="ngForm">
+  <form #categoryForm="ngForm">
     <span class="guess">Guess:</span>
-        <mat-form-field>
-            <input matInput [(ngModel)]="words[currentWordIndex].guess" name="guess" />
-        </mat-form-field>
-    </form>
+    <mat-form-field>
+      <input
+        matInput
+        [(ngModel)]="words[currentWordIndex].guess"
+        name="guess"
+      />
+    </mat-form-field>
+  </form>
 
-    <div class="button-group">
-        <button mat-flat-button (click)="resetInput()">Reset</button>
-        <button mat-flat-button (click)="submit()">Submit</button>
-    </div>
+  <div class="button-group">
+    <button mat-raised-button (click)="resetInput()">Reset</button>
+    <button mat-raised-button (click)="submit()">Submit</button>
+  </div>
 
-    <app-progress-bar [currentNumber]="currentWordIndex" [lastNumber]="words.length" />
+  <app-progress-bar
+    [currentNumber]="currentWordIndex"
+    [lastNumber]="words.length"
+  />
 </div>
 
-
 <div class="container" *ngIf="currentWordIndex >= words.length">
-    <app-results-table [dataSource]="results" [grade]="grade" [countCorretGuesses]="countCorretGuesses" [numOfTries]="numOfTries"></app-results-table>
-    <button mat-flat-button (click)="reset()">New Game</button>
+  <app-results-table
+    [dataSource]="results"
+    [grade]="grade"
+    [countCorretGuesses]="countCorretGuesses"
+    [numOfTries]="numOfTries"
+  ></app-results-table>
+  <button mat-raised-button (click)="resetGame()">New Game</button>
 </div>
