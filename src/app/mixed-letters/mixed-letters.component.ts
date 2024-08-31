@@ -48,6 +48,7 @@ export class MixedLettersComponent implements OnInit {
   guesses: boolean[] = []; 
   checkGuess: boolean = true; 
   countCorretGuesses: number = 0;
+  numOfTries: number = 0;
 
   constructor(
     private categoriesService: CategoriesService,
@@ -84,6 +85,7 @@ export class MixedLettersComponent implements OnInit {
     }
 
     this.words = randomwords;
+    this.numOfTries = randomwords.length;
 
     for (const word of this.words) {
       this.scrabledWords.push(this.scramble(word.origin));

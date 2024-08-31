@@ -36,6 +36,8 @@ export class WordSorterComponent implements OnInit {
   guesses: boolean[] = []
   grade: number = 0
   results: ResultRow[] = []
+  numOfTries : number = 0;
+  countCorretGuesses: number = 0;
 
   constructor(private categoriesService: CategoriesService, private dialog: MatDialog, private coinsService: CoinsService) { }
 
@@ -48,6 +50,7 @@ export class WordSorterComponent implements OnInit {
     this.currentCategory = this.categoriesService.get(categoryId);
     this.currentWordIndex = 0
     this.grade = 0
+    this.countCorretGuesses = 0;
 
     //מערך מילים מהקטגוריה שנבחרה על ידי המשתמש
     let chosenCategoryWords: TranslatedWord[] = this.currentCategory?.words || [];
@@ -80,7 +83,7 @@ export class WordSorterComponent implements OnInit {
     }
 
     //מערך עם שש מילים 
-    let combinedArray = randomwords1.concat(randomwords2);    //012345
+    let combinedArray = randomwords1.concat(randomwords2);   
 
     //מערך עם שש מילים מעורבבות
     let randomCombinedArray = [];
@@ -92,6 +95,9 @@ export class WordSorterComponent implements OnInit {
     }
 
     this.words = randomCombinedArray
+    this.numOfTries = randomCombinedArray.length;
+
+
   }
 
   reset(): void {
@@ -110,7 +116,9 @@ export class WordSorterComponent implements OnInit {
       if (gussedCorrectly) {
         this.grade += Math.floor(100 / this.words.length)
         if (this.grade==96) {
-          this.grade+=4}
+          this.grade+=4
+        }
+          this.countCorretGuesses++;
       }
 
       if (this.currentWordIndex === this.words.length) {

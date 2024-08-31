@@ -24,6 +24,7 @@ export class ResultsTableComponent implements OnInit {
   @Input ()   grade?: number;
   @Input() countCorretGuesses?:number;
   @Input() words?: TranslatedWord[];
+  @Input ()   numOfTries?: number;
 
   ngOnInit(): void {
     if (!this.showTarget) {
