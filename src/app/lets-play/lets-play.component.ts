@@ -1,6 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Category } from '../../shared/model/category';
-import { CategoriesService } from '../services/categories.service';
+import { Component, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { gameProfile } from '../../shared/model/game-profile';

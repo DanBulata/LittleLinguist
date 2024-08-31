@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { Category } from '../../shared/model/category';
 import { CategoriesService } from '../services/categories.service';
@@ -20,11 +20,11 @@ import { RouterModule } from '@angular/router';
 export class SelectGameDialogComponent implements OnInit {
 
   categorys: Category[] = [];
-  selectedCategory: any;
+  selectedCategory?: Category;
 
   constructor(private categoriesService: CategoriesService, @Inject(MAT_DIALOG_DATA) public game: gameProfile) { }
 
-  
+
   ngOnInit(): void {
     this.categorys = this.categoriesService.list()
   }

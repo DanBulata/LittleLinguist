@@ -83,7 +83,7 @@ export class WordSorterComponent implements OnInit {
     }
 
     //שלוש מילים רנדומליות מהקטגוריה שנבחרה על ידי המשתמש
-    let randomWordsChosen: GameWord[] = [];
+    const randomWordsChosen: GameWord[] = [];
     for (let i = 0; i < 3; i++) {
       // כדי לא לבחור באותה מילה פעמיים, יש להוציא את המילה מהאפשרויות
       const wordIndex = Math.floor(Math.random() * chosenCategoryWords.length);
@@ -102,7 +102,7 @@ export class WordSorterComponent implements OnInit {
     const categoryList = this.categoriesService.list();
 
     //טיפול במקרה קצה  - פחות מ3 מילים בקטגוריות הנוספות
-    for (let category of categoryList) {
+    for (const category of categoryList) {
       if (category.words.length < 3) {
         location.href = '/letsPlay';
         alert(
@@ -122,7 +122,7 @@ export class WordSorterComponent implements OnInit {
       ].words;
 
     //שלוש מילים מקטגוריה רנדומלית
-    let randomWordsOther: GameWord[] = [];
+    const randomWordsOther: GameWord[] = [];
     for (let i = 0; i < 3; i++) {
       // כדי לא לבחור באותה מילה פעמיים, יש להוציא את המילה מהאפשרויות
       const wordIndex = Math.floor(Math.random() * randomCategoryWords.length);
@@ -141,7 +141,7 @@ export class WordSorterComponent implements OnInit {
     let combinedArray = randomWordsChosen.concat(randomWordsOther);
 
     //מערך עם שש מילים מעורבבות
-    let randomCombinedArray = [];
+    const randomCombinedArray = [];
     for (let i = 0; i < 6; i++) {
       const wordIndex = Math.floor(Math.random() * combinedArray.length);
       const word = combinedArray[wordIndex];

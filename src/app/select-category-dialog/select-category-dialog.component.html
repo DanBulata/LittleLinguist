@@ -14,8 +14,8 @@
 
 <!-- CATEGORY DATA -->
 <div *ngIf="selectedCategory" class="categoryData">
-    {{selectedCategory?.words.length}} words <br><br>
-    Last updated:{{selectedCategory?.lastUpdateDate | date : 'short'}}
+    {{selectedCategory.words.length}} words <br><br>
+    Last updated:{{selectedCategory.lastUpdateDate | date : 'short'}}
 </div>
 
 <!-- PLAY BUTTON -->

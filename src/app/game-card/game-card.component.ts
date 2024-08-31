@@ -15,11 +15,12 @@ import { gameProfile } from '../../shared/model/game-profile';
 
 export class GameCardComponent {
   @Input()
-  games: any;
+  games: gameProfile[]=[];
 
   dialog = inject(MatDialog)
 
   openDialog(game: gameProfile): void {
     const dialogRef = this.dialog.open(SelectGameDialogComponent, { data: game })
+    
   }
 }

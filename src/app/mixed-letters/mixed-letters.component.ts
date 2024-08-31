@@ -125,7 +125,7 @@ export class MixedLettersComponent implements OnInit {
       }
 
       if (this.currentWordIndex === this.words.length) {
-        for (let guess of this.guesses) {
+        for (const guess of this.guesses) {
           if (guess == false) {
             this.checkGuess = false;
           }

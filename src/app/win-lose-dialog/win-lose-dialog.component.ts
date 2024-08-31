@@ -14,7 +14,7 @@ import {
   styleUrl: './win-lose-dialog.component.css',
 })
 export class WinLoseDialogComponent {
-  isSuccess: any;
+  isSuccess: boolean;
 
   constructor(
     private dialogRef: MatDialogRef<WinLoseDialogComponent>,

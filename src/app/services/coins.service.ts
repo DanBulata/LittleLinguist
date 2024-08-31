@@ -7,7 +7,7 @@ export class CoinsService {
   private readonly COINS_KEY = 'coins';
 
   private getCoins(): number {
-    let coins = localStorage.getItem(this.COINS_KEY);
+    const coins = localStorage.getItem(this.COINS_KEY);
     if (coins !== null && !isNaN(parseInt(coins, 10))) {
       return parseInt(coins, 10);
     }
