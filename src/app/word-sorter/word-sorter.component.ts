@@ -77,8 +77,8 @@ export class WordSorterComponent implements OnInit {
   // טיפול במקרה קצה  - פחות מ3 מילים באחת הקטגוריות
     for (let category of categoryList) {
       if (category.words.length<3) {
-        alert ("For this game, plese make sure all categories in the Admin Panel contain at least 3 words")
         location.href="/letsPlay"
+        alert ("For this game, plese make sure all categories in the Admin Panel contain at least 3 words")
         return;
       }          
     }
