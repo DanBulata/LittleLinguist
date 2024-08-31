@@ -13,6 +13,7 @@ import { MatTableModule } from '@angular/material/table';
 import { ResultRow, ResultsTableComponent } from "../results-table/results-table/results-table.component";
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ProgressBarComponent } from "../progress-bar/progress-bar/progress-bar.component";
+import { categories } from '../../shared/data/categories';
 
 interface GameWord {
   origin: string;
@@ -54,6 +55,11 @@ export class WordSorterComponent implements OnInit {
 
     //מערך מילים מהקטגוריה שנבחרה על ידי המשתמש
     let chosenCategoryWords: TranslatedWord[] = this.currentCategory?.words || [];
+    if (chosenCategoryWords.length<3){
+      alert ("For this game, plese make sure all categories in the Admin Panel contain at least 3 words")
+      location.href="/letsPlay"
+      return;
+    }
 
     //שלוש מילים רנדומליות מהקטגוריה שנבחרה על ידי המשתמש
     let randomwords1: GameWord[] = []
@@ -66,7 +72,16 @@ export class WordSorterComponent implements OnInit {
     }
 
     //רשימת הקטגוריות
-    const categoryList = this.categoriesService.list();
+    const categoryList = this.categoriesService.list();  
+   
+  // טיפול במקרה קצה  - פחות מ3 מילים באחת הקטגוריות
+    for (let category of categoryList) {
+      if (category.words.length<3) {
+        alert ("For this game, plese make sure all categories in the Admin Panel contain at least 3 words")
+        location.href="/letsPlay"
+        return;
+      }          
+    }
 
     //מערך של מילים מקטגוריה רנדומלית
     const filteredCategoryList = this.categoriesService.list().filter(category => category.id !== categoryId)
@@ -96,7 +111,6 @@ export class WordSorterComponent implements OnInit {
 
     this.words = randomCombinedArray
     this.numOfTries = randomCombinedArray.length;
-
 
   }
 
