@@ -113,7 +113,7 @@ export class MixedLettersComponent implements OnInit {
     const gussedCorrectly = currentWord.origin === currentWord.guess.toLowerCase();
     this.guesses.push(gussedCorrectly);
     const dialogRef = this.dialog.open(WinLoseDialogComponent, {
-      data: { isSuccess: gussedCorrectly },
+      data:  gussedCorrectly ,
     });
 
     dialogRef.afterClosed().subscribe(() => {

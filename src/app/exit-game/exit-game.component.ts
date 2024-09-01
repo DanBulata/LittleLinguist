@@ -18,8 +18,7 @@ export class ExitGameComponent {
   dialog = inject(MatDialog)
 
   openDialog(): void {
-    
-    const dialogRef = this.dialog.open(ExitDialogComponent)
+   this.dialog.open(ExitDialogComponent)
   }
 
 }
