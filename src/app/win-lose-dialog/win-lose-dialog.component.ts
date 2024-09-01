@@ -18,7 +18,7 @@ export class WinLoseDialogComponent {
 
   constructor(
     private dialogRef: MatDialogRef<WinLoseDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: boolean                        //any
+    @Inject(MAT_DIALOG_DATA) public data: boolean                   
   ) {
     this.isSuccess = data;
   }

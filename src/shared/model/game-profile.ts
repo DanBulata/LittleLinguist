@@ -4,6 +4,7 @@ export class gameProfile {
     gameDescription: string;
     gameURL: string;
 
+
     constructor(gameId: number, gameName: string, gameDescription: string, gameURL: string) {
         this.gameId = gameId;
         this.gameName = gameName;

@@ -5,7 +5,6 @@ h1 {
 
 .container {
     text-align: center;
-
 }
 
 button {
@@ -23,4 +22,8 @@ button {
 
 .guess{
     margin-right: 15px;
+}
+
+.grade{
+    float: right;
 }

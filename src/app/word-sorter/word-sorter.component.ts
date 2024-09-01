@@ -165,7 +165,7 @@ export class WordSorterComponent implements OnInit {
     const gussedCorrectly =
       word.isInCurrentCategory === isGuessWordInCurrentCategory;
     const dialogRef = this.dialog.open(WinLoseDialogComponent, {
-      data:  gussedCorrectly ,
+      data:  gussedCorrectly 
     });
 
     dialogRef.afterClosed().subscribe(() => {

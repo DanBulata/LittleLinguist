@@ -1,8 +1,11 @@
 <h1>Mixed Letters - {{ currentCategory?.name }}</h1>
 <app-exit-game></app-exit-game>
-<app-coins></app-coins>
 
-<p>Current score: {{ this.grade }} / 100</p>
+
+<div class="grade">
+    <p>Current game score: {{ this.grade }} / 100</p>
+    <app-coins></app-coins>
+</div>
 
 <div class="container" *ngIf="currentWordIndex < words.length">
   <p class="target">{{ words[currentWordIndex].target }}</p>
