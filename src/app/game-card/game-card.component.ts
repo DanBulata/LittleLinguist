@@ -20,7 +20,6 @@ export class GameCardComponent {
   dialog = inject(MatDialog)
 
   openDialog(game: gameProfile): void {
-    this.dialog.open(SelectGameDialogComponent, { data: game })
-    
+    this.dialog.open(SelectGameDialogComponent, { data: game })   
   }
 }

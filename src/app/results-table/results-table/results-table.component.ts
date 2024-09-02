@@ -29,6 +29,5 @@ export class ResultsTableComponent implements OnInit {
       this.displayedColumns = this.displayedColumns.filter(column => column !== "target")
     }
   }
-
 }
 

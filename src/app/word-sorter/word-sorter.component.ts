@@ -73,15 +73,6 @@ export class WordSorterComponent implements OnInit {
     let chosenCategoryWords: TranslatedWord[] =
       this.currentCategory?.words || [];
 
-    //טיפול במקרה קצה  - פחות מ3 מילים בקטגוריה שנבחרה
-    if (chosenCategoryWords.length < 3) {
-      location.href = '/letsPlay';
-      alert(
-        'For this game, plese make sure all categories in the Admin Panel contain at least 3 words'
-      );
-      return;
-    }
-
     //שלוש מילים רנדומליות מהקטגוריה שנבחרה על ידי המשתמש
     const randomWordsChosen: GameWord[] = [];
     for (let i = 0; i < 3; i++) {
@@ -101,18 +92,7 @@ export class WordSorterComponent implements OnInit {
     //רשימת הקטגוריות
     const categoryList = this.categoriesService.list();
 
-    //טיפול במקרה קצה  - פחות מ3 מילים בקטגוריות הנוספות
-    for (const category of categoryList) {
-      if (category.words.length < 3) {
-        location.href = '/letsPlay';
-        alert(
-          'For this game, plese make sure all categories in the Admin Panel contain at least 3 words'
-        );
-        return;
-      }
-    }
-
-    //מערך של מילים מקטגוריה רנדומלית
+     //מערך של מילים מקטגוריה רנדומלית
     const filteredCategoryList = categoryList.filter(
       (category) => category.id !== categoryId
     );

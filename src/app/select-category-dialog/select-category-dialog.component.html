@@ -1,31 +1,40 @@
-<!-- <div *ngIf="!notEnoughWords"> -->
+<div *ngIf="!notEnoughWords">
+    <!-- SELECT -->
+    <div class="container">
+        <mat-dialog-content>
+            <mat-form-field>
+                <mat-label>Choose a category to play </mat-label>
+                <mat-select [(ngModel)]="selectedCategory">
+                    <mat-option *ngFor="let category of categorys" [value]="category">
+                        {{category.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-dialog-content>
+    </div>
 
-<!-- SELECT -->
-<div class="container">
-    <mat-dialog-content>
-        <mat-form-field>
-            <mat-label>Choose a category to play </mat-label>
-            <mat-select [(ngModel)]="selectedCategory">
-                <mat-option *ngFor="let category of categorys" [value]="category">
-                    {{category.name}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-    </mat-dialog-content>
+
+    <!-- CATEGORY DATA -->
+    <div *ngIf="selectedCategory" class="categoryData">
+        {{selectedCategory.words.length}} words <br><br>
+        Last updated:{{selectedCategory.lastUpdateDate | date : 'short'}}
+    </div>
+
+    <!-- PLAY BUTTON -->
+    <div class="platBtn">
+        <button mat-raised-button color="primary" mat-dialog-close [disabled]="!selectedCategory"
+            [routerLink]="[game.gameURL,selectedCategory?.id]">
+            play
+        </button>
+    </div>
 </div>
 
-<!-- CATEGORY DATA -->
-<div *ngIf="selectedCategory" class="categoryData">
-    {{selectedCategory.words.length}} words <br><br>
-    Last updated:{{selectedCategory.lastUpdateDate | date : 'short'}}
-</div>
 
-<!-- PLAY BUTTON -->
-<div class="platBtn">
-    <button mat-raised-button color="primary" mat-dialog-close [disabled]="!selectedCategory"
-        [routerLink]="[game.gameURL,selectedCategory?.id]">
-        play
-    </button>
+<div *ngIf="notEnoughWords">
+    <div class="platBtn">
+        <p>For this game, plese make sure all categories in the Admin Panel contain at least 3 words</p>
+        <button mat-raised-button color="primary" mat-dialog-close >
+            Got it!
+        </button>
+    </div>
 </div>
-
-<!-- </div> -->
