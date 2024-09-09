@@ -63,7 +63,7 @@ export class WordSorterComponent implements OnInit {
   }
 
   initGame(): void {
-    const categoryId = parseInt(this.id);
+    const categoryId = (this.id);
     this.currentCategory = this.categoriesService.get(categoryId);
     this.currentWordIndex = 0;
     this.grade = 0;
@@ -94,7 +94,7 @@ export class WordSorterComponent implements OnInit {
 
      //מערך של מילים מקטגוריה רנדומלית
     const filteredCategoryList = categoryList.filter(
-      (category) => category.id !== categoryId
+      (category : Category) => category.id !== categoryId
     );
     let randomCategoryWords =
       filteredCategoryList[

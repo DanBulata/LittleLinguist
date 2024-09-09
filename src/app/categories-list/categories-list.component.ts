@@ -28,7 +28,7 @@ export class CategoriesListComponent implements OnInit {
     this.dataSource = this.categoriesService.list();
   }
 
-  deleteCategory(id: number, name: string) {
+  deleteCategory(id: string, name: string) {
     const dialogRef = this.dialogService.open(DeleteCategoryDialogComponent, { data: name });
 
     dialogRef.afterClosed().subscribe(result => {

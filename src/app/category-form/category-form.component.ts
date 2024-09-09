@@ -22,26 +22,28 @@ import { TranslatedWord } from '../../shared/model/translated-word';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
   ],
   templateUrl: './category-form.component.html',
   styleUrl: './category-form.component.css',
 })
 export class CategoryFormComponent implements OnInit {
-  currentCategory = new Category(0, "", Language.English, Language.Hebrew);
-  displayedColumns: string[] = ["Origin", "Target", "Actions"];
+  currentCategory = new Category('', '', Language.English, Language.Hebrew);
+  displayedColumns: string[] = ['Origin', 'Target', 'Actions'];
 
   @Input()
   id?: string;
 
   @ViewChild('wordsGroup') wordsGroup?: NgModelGroup;
 
-  constructor(private categoriesService: CategoriesService,
-    private router: Router) { }
+  constructor(
+    private categoriesService: CategoriesService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     if (this.id) {
-      const categoryData = this.categoriesService.get(parseInt(this.id));
+      const categoryData = this.categoriesService.get(this.id);
 
       if (categoryData) {
         this.currentCategory = categoryData;
@@ -50,14 +52,15 @@ export class CategoryFormComponent implements OnInit {
   }
 
   addWord() {
-    this.currentCategory.words =
-      [...this.currentCategory.words,
-      new TranslatedWord("", "")];
+    this.currentCategory.words = [
+      ...this.currentCategory.words,
+      new TranslatedWord('', ''),
+    ];
   }
 
   deleteWord(index: number) {
     const extendedWordsList = Array.from(this.currentCategory.words);
-    extendedWordsList.splice(index, 1)
+    extendedWordsList.splice(index, 1);
     this.currentCategory.words = extendedWordsList;
     this.wordsGroup!.control.markAsDirty();
   }
@@ -66,9 +69,9 @@ export class CategoryFormComponent implements OnInit {
     if (this.id) {
       this.categoriesService.update(this.currentCategory);
     } else {
-      this.categoriesService.add(this.currentCategory);
+      this.categoriesService.add(this.currentCategory).then(() => {
+        this.router.navigate(['']);
+      });
     }
-
-    this.router.navigate(['']);
   }
 }

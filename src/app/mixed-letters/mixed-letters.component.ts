@@ -66,7 +66,7 @@ export class MixedLettersComponent implements OnInit {
     this.guesses = [];
     this.results = [];
     this.scrambledWords = [];
-    this.currentCategory = this.categoriesService.get(parseInt(this.id));
+    this.currentCategory = this.categoriesService.get((this.id));
     let chosenCategoryWords: TranslatedWord[] =
       this.currentCategory?.words || [];
     const wordsMaxLength = chosenCategoryWords.length;
