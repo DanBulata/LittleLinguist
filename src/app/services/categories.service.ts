@@ -76,7 +76,7 @@ export class CategoriesService {
 
 import { Injectable } from '@angular/core';
 import { Category } from '../../shared/model/category';
-import { addDoc, collection, deleteDoc, doc, Firestore, getDocs, getDoc, updateDoc } from '@angular/fire/firestore';
+import { addDoc, collection, deleteDoc, doc, Firestore, getDocs, getDoc,  DocumentSnapshot, QuerySnapshot, setDoc } from '@angular/fire/firestore';
 import { categoryConverter } from './converters/category-converter';
 
 @Injectable({
@@ -85,26 +85,48 @@ import { categoryConverter } from './converters/category-converter';
 export class CategoriesService {
   constructor(private firestore: Firestore) {}
 
+  // async list(): Promise<Category[]> {
+  //   const categoryCollection = collection(this.firestore, 'categories').withConverter(categoryConverter);
+  //   const categorySnapshot = await getDocs(categoryCollection);
+  //   return categorySnapshot.docs.map(doc => doc.data());
+  // }
+      // return categorySnapshot.docs.map(doc => doc.data());
+
   async list(): Promise<Category[]> {
-    const categoryCollection = collection(this.firestore, 'categories').withConverter(categoryConverter);
-    const categorySnapshot = await getDocs(categoryCollection);
-    return categorySnapshot.docs.map(doc => doc.data());
-  }
+    const categoryCollection = collection(this.firestore, 'categories').withConverter(categoryConverter)
+    const QuerySnapshot: QuerySnapshot<Category> = await getDocs(categoryCollection)
+    const result: Category[] = [];
+
+    QuerySnapshot.docs.forEach((docSnap: DocumentSnapshot<Category>)=>{
+      const data = docSnap.data();
+      if(data){ 
+        result.push(data)
+      }
+    })
+    return result
+    }
+
+  
+
+
 
   async get(id: string): Promise<Category | undefined> {
     const categoryDocRef = doc(this.firestore, 'categories', id).withConverter(categoryConverter);
-    const categoryDoc = await getDoc(categoryDocRef);
-    return categoryDoc.exists() ? categoryDoc.data() : undefined;
+    // const categoryDoc = await getDoc(categoryDocRef);
+    // return categoryDoc.exists() ? categoryDoc.data() : undefined;
+    return (await getDoc(categoryDocRef)).data()
   }
 
-  async delete(id: string): Promise<void> {
-    const categoryDocRef = doc(this.firestore, 'categories', id);
-    await deleteDoc(categoryDocRef);
+  async delete(currentCategoryId: string): Promise<void> {
+    const categoryDocRef = doc(this.firestore, 'categories', currentCategoryId).withConverter(categoryConverter);
+    return deleteDoc(categoryDocRef);
   }
 
-  async update(category: Category): Promise<void> {
-    const categoryDocRef = doc(this.firestore, 'categories', category.id).withConverter(categoryConverter);
-    await updateDoc(categoryDocRef, { ...category });
+
+  async update(currentCategory: Category): Promise<void> {
+    const categoryDocRef = doc(this.firestore, 'categories', currentCategory.id).withConverter(categoryConverter);
+    // await updateDoc(categoryDocRef, { ...category });
+    return setDoc (categoryDocRef , currentCategory)
   }
 
   async add(category: Category): Promise<void> {

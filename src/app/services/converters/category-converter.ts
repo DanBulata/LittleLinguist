@@ -1,6 +1,6 @@
-import { Timestamp } from '@angular/fire/firestore';
+import { QueryDocumentSnapshot,  SnapshotOptions, Timestamp } from '@angular/fire/firestore';
 import { Category } from '../../../shared/model/category';
-import { Language } from '../../../shared/model/language';
+// import { Language } from '../../../shared/model/language';
 
 export const categoryConverter = {
   toFirestore: (categoryToSave: Category) => {
@@ -20,7 +20,22 @@ export const categoryConverter = {
     };
   },
 
-  fromFirestore: () => {
-    return new Category("","",Language.English,Language.Hebrew)
-  },
+
+  fromFirestore: (
+    snapshot: QueryDocumentSnapshot,
+    options: SnapshotOptions
+  ) => {
+    const data = snapshot.data(options)
+
+    const category = new Category(
+      snapshot.id,
+      data['name'],        
+      data['origin'],
+      data['target']
+    )
+
+    category.lastUpdateDate = data['lastUpdate'].toDate()
+    return category
+  }
+  
 };

@@ -71,26 +71,44 @@ import { DeleteCategoryDialogComponent } from '../delete-category-dialog/delete-
 export class CategoriesListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'numOfWords', 'lastUpdateDate', 'actions'];
   dataSource: Category[] = [];
+  isFullyLoaded = false
 
   constructor(
     private categoriesService: CategoriesService,
     private dialogService: MatDialog
   ) {}
 
-  async ngOnInit(): Promise<void> { // <-- Added async to ngOnInit
-    try {
-      this.dataSource = await this.categoriesService.list(); // <-- Await the promise
-    } catch (error) {
-      console.error('Failed to load categories:', error);
-    }
+  // async ngOnInit(): Promise<void> { // <-- Added async to ngOnInit
+  //   try {
+  //     this.dataSource = await this.categoriesService.list(); // <-- Await the promise
+  //   } catch (error) {
+  //     console.error('Failed to load categories:', error);
+  //   }
+  // }
+
+   ngOnInit(): void { // <-- Added async to ngOnInit
+this.categoriesService.list().then((result:Category[]) => {
+  this.dataSource = result 
+  this.isFullyLoaded = true  
+})
   }
+
+
+    // try {
+    //   this.dataSource = await this.categoriesService.list(); // <-- Await the promise
+    // } catch (error) {
+    //   console.error('Failed to load categories:', error);
+    // }
+  
 
   deleteCategory(id: string, name: string): void {
     const dialogRef = this.dialogService.open(DeleteCategoryDialogComponent, { data: name });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {        //****במצגת:  deletionResult****/
       if (result) {
-        this.categoriesService.delete(id);
+        this.categoriesService.delete(id).then(() => {
+          this.categoriesService.list().then((result:Category[]) => (this.dataSource=result))
+        });
         this.refreshCategories(); // <-- Refresh the list after deletion
       }
     });

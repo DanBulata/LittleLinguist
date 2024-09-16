@@ -123,17 +123,25 @@ export class CategoryFormComponent implements OnInit {
     private router: Router
   ) {}
 
-  async ngOnInit(): Promise<void> { // <-- Added async to ngOnInit
+  ngOnInit(): void { // <-- Added async to ngOnInit
     if (this.id) {
-      try {
-        const categoryData = await this.categoriesService.get(this.id); // <-- Await the promise
-
-        if (categoryData) {
-          this.currentCategory = categoryData;
+      this.categoriesService.get(this.id).then(
+        (categoryFromService) => {
+          if (categoryFromService) {
+            this.currentCategory = categoryFromService
+          }
         }
-      } catch (error) {
-        console.error('Failed to load category:', error);
-      }
+      )
+
+      // try {
+      //   const categoryData = await this.categoriesService.get(this.id); // <-- Await the promise
+
+      //   if (categoryData) {
+      //     this.currentCategory = categoryData;
+      //   }
+      // } catch (error) {
+      //   console.error('Failed to load category:', error);
+      // }
     }
   }
 
@@ -153,11 +161,15 @@ export class CategoryFormComponent implements OnInit {
 
   saveCategory() {
     if (this.id) {
-      this.categoriesService.update(this.currentCategory);
+      this.categoriesService.update(this.currentCategory).then(
+        () => this.router.navigate([''])
+      );
     } else {
       this.categoriesService.add(this.currentCategory).then(() => {
         this.router.navigate(['']);
       });
     }
   }
+
+
 }
