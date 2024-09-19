@@ -16,7 +16,7 @@ export const categoryConverter = {
       name: categoryToSave.name,
       origin: categoryToSave.origin,
       target: categoryToSave.target,
-      lastUpdateDate: Timestamp.fromDate(categoryToSave.lastUpdateDate),
+      lastUpdateDate: Timestamp.fromDate(categoryToSave.lastUpdateDate).toDate(),  //toDate??
     };
   },
 

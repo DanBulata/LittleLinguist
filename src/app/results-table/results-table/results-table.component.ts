@@ -31,3 +31,4 @@ export class ResultsTableComponent implements OnInit {
   }
 }
 
+// addGameResult(idCategory, idGame, Date, grade) 
