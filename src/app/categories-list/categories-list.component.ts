@@ -88,6 +88,7 @@ export class CategoriesListComponent implements OnInit {
 
    ngOnInit(): void { // <-- Added async to ngOnInit
 this.categoriesService.list().then((result:Category[]) => {
+// this.categoriesService.list().then((result:Category[]) => {
   this.dataSource = result 
   this.isFullyLoaded = true  
 })
@@ -106,9 +107,9 @@ this.categoriesService.list().then((result:Category[]) => {
 
     dialogRef.afterClosed().subscribe((result) => {        //****במצגת:  deletionResult****/
       if (result) {
-        this.categoriesService.delete(id).then(() => {
+        this.categoriesService.delete(id)  
           this.categoriesService.list().then((result:Category[]) => (this.dataSource=result))
-        });
+        
         this.refreshCategories(); // <-- Refresh the list after deletion
       }
     });
