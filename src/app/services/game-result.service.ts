@@ -1,23 +1,28 @@
 import { Injectable } from '@angular/core';
-import { collection, DocumentSnapshot, Firestore, getDocs, Timestamp, QuerySnapshot } from '@angular/fire/firestore';
+import { collection, DocumentSnapshot, Firestore, getDocs, QuerySnapshot, addDoc } from '@angular/fire/firestore';
 import { GameResultConverter } from './converters/game-result-converter';
+import { GameResult } from '../../shared/model/Game-Result';
 
 
 @Injectable({
   providedIn: 'root',
 })
 
-export class GameResult {
+export class GameResultService {
     constructor(private firestore: Firestore) {}
-    gameList? : GameResult[]=[];
-    idCategory?: string;
-    idGame?: string;
-    date?: Timestamp;
-    numOfPoints?: number;
+    // gameList? : GameResult[]=[];
+    // idCategory?: string;
+    // idGame?: string;
+    // date?: Timestamp;
+    // numOfPoints?: number;
 
-     addGameResult(gameResult: GameResult) {
-        this.gameList?.push(gameResult)
-    }    
+     async addGameResult(gameResult: GameResult) {
+        // this.gameList?.push(gameResult)
+          const gamesCollection = collection(this.firestore, 'gamesCollection').withConverter(GameResultConverter);
+          await addDoc(gamesCollection, gameResult);
+        }
+                                                   //  ******addDoc
+       
 
     async list(): Promise<GameResult[]> {
         const gamesCollection = collection(this.firestore, 'gamesCollection').withConverter(GameResultConverter)

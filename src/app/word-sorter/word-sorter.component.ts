@@ -383,7 +383,8 @@ import {
 } from '../results-table/results-table/results-table.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ProgressBarComponent } from '../progress-bar/progress-bar/progress-bar.component';
-import { GameResult } from '../services/game-result.service';
+import { GameResultService } from '../services/game-result.service';
+import { GameResult } from '../../shared/model/Game-Result';
 
 
 interface GameWord {
@@ -405,7 +406,6 @@ interface GameWord {
     ResultsTableComponent,
     MatProgressBarModule,
     ProgressBarComponent,
-    GameResult
   ],
   templateUrl: './word-sorter.component.html',
   styleUrls: ['./word-sorter.component.css'], // <-- Fixed typo here
@@ -426,8 +426,7 @@ export class WordSorterComponent implements OnInit {
     private categoriesService: CategoriesService,
     private dialog: MatDialog,
     private coinsService: CoinsService,
-    private gameResult: GameResult
-
+    private gameResultService: GameResultService,
   ) {}
 
   async ngOnInit(): Promise<void> { // <-- Added async to ngOnInit
@@ -551,9 +550,16 @@ export class WordSorterComponent implements OnInit {
           });
         }
 
+        // const categoryId = this.id;
+        // // const idcategory = this.categoriesService.get(categoryId);
+        // const gameResult = new GameResult (categoryId, '2', Date, this.grade)
+        // this.gameResultService.addGameResult(gameResult) 
+
         const categoryId = this.id;
-        const idcategory = this.categoriesService.get(categoryId);
-        this.gameResult.addGameResult(idcategory, idGame, Date, grade) 
+        // const idcategory = this.categoriesService.get(categoryId);
+        const currentDate = new Date();  // This gives you a Date object
+        const gameResult = new GameResult(categoryId, '2', currentDate, this.grade);
+        this.gameResultService.addGameResult(gameResult);
       }
     });
   }
