@@ -34,7 +34,7 @@ export const categoryConverter = {
       data['target']
     )
 
-    category.lastUpdateDate = data['lastUpdate'].toDate()
+    category.lastUpdateDate = data['lastUpdateDate'].toDate()
     return category
   }
   
