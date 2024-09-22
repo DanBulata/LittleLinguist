@@ -383,6 +383,8 @@ import {
 } from '../results-table/results-table/results-table.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ProgressBarComponent } from '../progress-bar/progress-bar/progress-bar.component';
+import { GameResult } from '../services/game-result.service';
+
 
 interface GameWord {
   origin: string;
@@ -403,6 +405,7 @@ interface GameWord {
     ResultsTableComponent,
     MatProgressBarModule,
     ProgressBarComponent,
+    GameResult
   ],
   templateUrl: './word-sorter.component.html',
   styleUrls: ['./word-sorter.component.css'], // <-- Fixed typo here
@@ -422,7 +425,9 @@ export class WordSorterComponent implements OnInit {
   constructor(
     private categoriesService: CategoriesService,
     private dialog: MatDialog,
-    private coinsService: CoinsService
+    private coinsService: CoinsService,
+    private gameResult: GameResult
+
   ) {}
 
   async ngOnInit(): Promise<void> { // <-- Added async to ngOnInit
@@ -545,7 +550,14 @@ export class WordSorterComponent implements OnInit {
             correct: this.guesses[i],
           });
         }
+
+        const categoryId = this.id;
+        const idcategory = this.categoriesService.get(categoryId);
+        this.gameResult.addGameResult(idcategory, idGame, Date, grade) 
       }
     });
   }
 }
+
+
+

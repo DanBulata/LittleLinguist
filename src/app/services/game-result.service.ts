@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { collection, DocumentSnapshot, Firestore, getDocs, Timestamp, QuerySnapshot } from '@angular/fire/firestore';
-import { GameResultConverter } from './converters/gameResultconverter';
+import { GameResultConverter } from './converters/game-result-converter';
 
 
 @Injectable({
@@ -15,7 +15,7 @@ export class GameResult {
     date?: Timestamp;
     numOfPoints?: number;
 
-    private addGameResult(gameResult: GameResult) {
+     addGameResult(gameResult: GameResult) {
         this.gameList?.push(gameResult)
     }    
 

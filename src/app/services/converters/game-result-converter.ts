@@ -91,7 +91,7 @@
 
 
 import { QueryDocumentSnapshot, SnapshotOptions } from '@angular/fire/firestore';
-import { GameResult } from '../gameResult.service';
+import { GameResult } from '../game-result.service';
 
 export const GameResultConverter = {
   toFirestore: (gameToSave: GameResult) => {
