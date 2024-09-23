@@ -21,13 +21,12 @@ export class GameResultService {
           const gamesCollection = collection(this.firestore, 'gamesCollection').withConverter(GameResultConverter);
           await addDoc(gamesCollection, gameResult);
         }
-                                                   //  ******addDoc
+                                                
        
 
     async list(): Promise<GameResult[]> {
         const gamesCollection = collection(this.firestore, 'gamesCollection').withConverter(GameResultConverter)
         const QuerySnapshot: QuerySnapshot<GameResult> = await getDocs(gamesCollection)
-        
         const result: GameResult[] = [];
     
         QuerySnapshot.docs.forEach((docSnap: DocumentSnapshot<GameResult>)=>{
@@ -38,7 +37,4 @@ export class GameResultService {
         })
         return result
         }
-    
-
-
 }
