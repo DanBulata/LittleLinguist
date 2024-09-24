@@ -4,9 +4,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 
 export interface ResultRow {
-  origin: string
-  target?: string
-  correct: boolean
+  origin: string;
+  target?: string;
+  correct: boolean;
 }
 
 @Component({
@@ -14,21 +14,21 @@ export interface ResultRow {
   standalone: true,
   imports: [MatTableModule, MatIconModule, CommonModule],
   templateUrl: './results-table.component.html',
-  styleUrl: './results-table.component.css'
+  styleUrl: './results-table.component.css',
 })
 export class ResultsTableComponent implements OnInit {
   displayedColumns: string[] = ['origin', 'target', 'correct'];
   @Input() dataSource: ResultRow[] = [];
-  @Input() showTarget: boolean = true
-  @Input () grade?: number;
-  @Input() countCorretGuesses?:number;
-  @Input () numOfTries?: number;
+  @Input() showTarget: boolean = true;
+  @Input() grade?: number;
+  @Input() countCorretGuesses?: number;
+  @Input() numOfTries?: number;
 
   ngOnInit(): void {
     if (!this.showTarget) {
-      this.displayedColumns = this.displayedColumns.filter(column => column !== "target")
+      this.displayedColumns = this.displayedColumns.filter(
+        (column) => column !== 'target'
+      );
     }
   }
 }
-
-// addGameResult(idCategory, idGame, Date, grade) 

@@ -2,11 +2,9 @@
 <app-exit-game></app-exit-game>
 
 <div class="grade">
-    <p>Current game score: {{ this.grade }} / 100</p>
-    <app-coins></app-coins>
+  <p>Current game score: {{ this.grade }} / 100</p>
+  <app-coins></app-coins>
 </div>
-
-
 
 <div class="container" *ngIf="currentWordIndex < words.length">
   <p>

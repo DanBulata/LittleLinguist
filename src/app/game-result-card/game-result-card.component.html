@@ -1,66 +1,64 @@
 <div class="container">
+  <mat-card appearance="outlined" class="game">
+    <div class="cardTitle">
+      <mat-card-title>{{ getCoins() }}</mat-card-title>
+    </div>
+    <div class="cardContent">
+      <mat-card-content>Points</mat-card-content>
+    </div>
+  </mat-card>
 
-    <mat-card appearance="outlined" class="game"  >
-      <div class="cardTitle">
-        <mat-card-title>{{getCoins()}}</mat-card-title>
-      </div>
-      <div class="cardContent">
-        <mat-card-content>Points</mat-card-content>
-      </div>
-    </mat-card>
+  <mat-card appearance="outlined" class="game">
+    <div class="cardTitle">
+      <mat-card-title>{{ gameCount }}</mat-card-title>
+    </div>
+    <div class="cardContent">
+      <mat-card-content>Games</mat-card-content>
+    </div>
+  </mat-card>
 
-    <mat-card appearance="outlined" class="game"  >
-        <div class="cardTitle">
-          <mat-card-title>{{gameCount}}</mat-card-title>
-        </div>
-        <div class="cardContent">
-          <mat-card-content>Games</mat-card-content>
-        </div>
-      </mat-card>
+  <mat-card appearance="outlined" class="game">
+    <div class="cardTitle">
+      <mat-card-title>{{ perfectGamesPercentage }}%</mat-card-title>
+    </div>
+    <div class="cardContent">
+      <mat-card-content>Perfect Games</mat-card-content>
+    </div>
+  </mat-card>
 
-      <mat-card appearance="outlined" class="game">
-        <div class="cardTitle">
-          <mat-card-title>{{ perfectGamesPercentage }}%</mat-card-title>
-        </div>
-        <div class="cardContent">
-          <mat-card-content>Perfect Games</mat-card-content>
-        </div>
-      </mat-card>
+  <mat-card appearance="outlined" class="game">
+    <div class="cardTitle">
+      <mat-card-title>{{ learnedCategoriesCount }}</mat-card-title>
+    </div>
+    <div class="cardContent">
+      <mat-card-content>Categories learnt</mat-card-content>
+    </div>
+  </mat-card>
 
-      <mat-card appearance="outlined" class="game"  >
-        <div class="cardTitle">
-          <mat-card-title>{{learnedCategoriesCount}}</mat-card-title>
-        </div>
-        <div class="cardContent">
-          <mat-card-content>Categories learnt</mat-card-content>
-        </div>
-      </mat-card>
+  <mat-card appearance="outlined" class="game">
+    <div class="cardTitle">
+      <mat-card-title>{{ learnedCategoriesPercentage }}%</mat-card-title>
+    </div>
+    <div class="cardContent">
+      <mat-card-content>Learned Categories Percentage</mat-card-content>
+    </div>
+  </mat-card>
 
-      <mat-card appearance="outlined" class="game"  >
-        <div class="cardTitle">
-          <mat-card-title>{{learnedCategoriesPercentage}}%</mat-card-title>
-        </div>
-        <div class="cardContent">
-          <mat-card-content>Learned Categories Percentage</mat-card-content>
-        </div>
-      </mat-card>
-  
-      <mat-card appearance="outlined" class="game"  >
-          <div class="cardTitle">
-            <mat-card-title>{{categoriesYetToLearn}}</mat-card-title>
-          </div>
-          <div class="cardContent">
-            <mat-card-content>Categories yet to learn</mat-card-content>
-          </div>
-        </mat-card>
-  
+  <mat-card appearance="outlined" class="game">
+    <div class="cardTitle">
+      <mat-card-title>{{ categoriesYetToLearn }}</mat-card-title>
+    </div>
+    <div class="cardContent">
+      <mat-card-content>Categories yet to learn</mat-card-content>
+    </div>
+  </mat-card>
 
-        <mat-card appearance="outlined" class="game"  >
-          <div class="cardTitle">
-            <mat-card-title>{{mostPlayedCategoryName}}</mat-card-title>
-          </div>
-          <div class="cardContent">
-            <mat-card-content>Most played category</mat-card-content>
-          </div>
-        </mat-card>
-  </div>
+  <mat-card appearance="outlined" class="game">
+    <div class="cardTitle">
+      <mat-card-title>{{ mostPlayedCategoryName }}</mat-card-title>
+    </div>
+    <div class="cardContent">
+      <mat-card-content>Most played category</mat-card-content>
+    </div>
+  </mat-card>
+</div>

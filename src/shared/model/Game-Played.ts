@@ -1,4 +1,3 @@
-
   export class GamePlayed {
     date: Date;
     idCategory : string;

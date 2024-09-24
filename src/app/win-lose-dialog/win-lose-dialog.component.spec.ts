@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { WinLoseDialogComponent } from './win-lose-dialog.component';
 
 describe('WinLoseDialogComponent', () => {

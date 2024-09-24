@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
-import { gameProfile } from '../../shared/model/game-profile';
+import { GameProfile } from '../../shared/model/game-profile';
 import { GamesInfoService } from '../services/game-info.service';
 import { GameCardComponent } from "../game-card/game-card.component";
 
@@ -14,7 +14,7 @@ import { GameCardComponent } from "../game-card/game-card.component";
 })
 
 export class LetsPlayComponent implements OnInit {
-  games: gameProfile[] = [];
+  games: GameProfile[] = [];
 
   constructor(private gamesInfoService: GamesInfoService) { }
 

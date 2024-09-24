@@ -1,4 +1,4 @@
-export class gameProfile {
+export class GameProfile {
     gameId: number;
     gameName: string;
     gameDescription: string;
@@ -12,8 +12,3 @@ export class gameProfile {
         this.gameURL = gameURL;
     }
 }
-
-
-// const mixedLetters = new gameProfile(1, "Mixed letters", "Practice spelling, by finding the right order of letters for every word in the category", "MixedLetters");
-
-// const wordSorter = new gameProfile(2, "Word sorter", "list words that fit into particular categories", "SortGame");
