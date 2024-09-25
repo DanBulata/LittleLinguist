@@ -37,7 +37,7 @@ export class GameResultCardComponent implements OnInit {
   monthlyChallenge = {
     gamesPlayed: 0,
     remainingGames: 0,
-    message: ''
+    message: '',
   };
 
   constructor(
@@ -145,18 +145,18 @@ export class GameResultCardComponent implements OnInit {
   async mostPlayedCategory(): Promise<string> {
     const results = await this.gameResultService.list();
     let highestCount = 0;
-    const resultsArrStr: string[] = [];
+    const resultsArr: string[] = [];
 
     results.forEach((game) => {
-      resultsArrStr.push(game.idCategory);
+      resultsArr.push(game.idCategory);
     });
 
-    for (let i = 0; i < resultsArrStr.length; i++) {
-      const categoryId = resultsArrStr[i];
+    for (let i = 0; i < resultsArr.length; i++) {
+      const categoryId = resultsArr[i];
       let currentCount = 0;
 
-      for (let j = 0; j < resultsArrStr.length; j++) {
-        if (resultsArrStr[j] === categoryId) {
+      for (let j = 0; j < resultsArr.length; j++) {
+        if (resultsArr[j] === categoryId) {
           currentCount++;
         }
       }
@@ -180,7 +180,11 @@ export class GameResultCardComponent implements OnInit {
 
   async countGamesThisMonth(): Promise<number> {
     const currentDate = new Date();
-    const firstOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+    const firstOfMonth = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
+      1
+    );
     const results = await this.gameResultService.list();
     let gamesThisMonth = 0;
 
@@ -199,14 +203,10 @@ export class GameResultCardComponent implements OnInit {
     this.monthlyChallenge.remainingGames = Math.max(20 - gamesThisMonth, 0);
 
     if (gamesThisMonth >= 20) {
-      this.monthlyChallenge.message = 'GOOD JOB! You have accomplished the challange!';
+      this.monthlyChallenge.message =
+        'GOOD JOB! You have accomplished the challange!';
     } else {
-      // this.monthlyChallenge.message = `נותרו עוד ${this.monthlyChallenge.remainingGames} משחקים כדי לעמוד באתגר החודשי. המשך כך!`;
       this.monthlyChallenge.message = ` games this month.  ${this.monthlyChallenge.remainingGames} more to complete the chalange of 20 games per month  `;
     }
   }
-
-
-
-
 }
