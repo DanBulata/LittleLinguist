@@ -16,6 +16,9 @@ import { ProgressBarComponent } from '../progress-bar/progress-bar/progress-bar.
 import { FormsModule } from '@angular/forms';
 import { WinLoseDialogComponent } from '../win-lose-dialog/win-lose-dialog.component';
 import { CoinsService } from '../services/coins.service';
+import { GameResultService } from '../services/game-result.service';
+import { GameResult } from '../../shared/model/Game-Result';
+
 
 @Component({
   selector: 'app-mixed-letters',
@@ -51,7 +54,8 @@ export class MixedLettersComponent implements OnInit {
   constructor(
     private categoriesService: CategoriesService,
     private dialog: MatDialog,
-    private coinsService: CoinsService
+    private coinsService: CoinsService,
+    private gameResultService: GameResultService
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -152,6 +156,16 @@ export class MixedLettersComponent implements OnInit {
             target: this.words[i].target,
           });
         }
+
+        const categoryId = this.id;
+        const currentDate = new Date();
+        const gameResult = new GameResult(
+          categoryId,
+          '1',
+          currentDate,
+          this.grade
+        );
+        this.gameResultService.addGameResult(gameResult);
       }
     });
   }
