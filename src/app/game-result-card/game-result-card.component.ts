@@ -34,6 +34,12 @@ export class GameResultCardComponent implements OnInit {
   mostPlayedCategoryName: string = '';
   mostPlayedCategoryId: string = '';
 
+  monthlyChallenge = {
+    gamesPlayed: 0,
+    remainingGames: 0,
+    message: ''
+  };
+
   constructor(
     private coinsService: CoinsService,
     private gameResultService: GameResultService,
@@ -47,6 +53,7 @@ export class GameResultCardComponent implements OnInit {
     this.learntCategoriesPercentage();
     this.countYetToLearnCategories();
     this.mostPlayedCategory();
+    this.calculateMonthlyChallenge();
   }
 
   getCoins() {
@@ -170,4 +177,36 @@ export class GameResultCardComponent implements OnInit {
 
     return 'No category found';
   }
+
+  async countGamesThisMonth(): Promise<number> {
+    const currentDate = new Date();
+    const firstOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+    const results = await this.gameResultService.list();
+    let gamesThisMonth = 0;
+
+    results.forEach((game) => {
+      if (game.date >= firstOfMonth) {
+        gamesThisMonth++;
+      }
+    });
+
+    return gamesThisMonth;
+  }
+
+  async calculateMonthlyChallenge(): Promise<void> {
+    const gamesThisMonth = await this.countGamesThisMonth();
+    this.monthlyChallenge.gamesPlayed = gamesThisMonth;
+    this.monthlyChallenge.remainingGames = Math.max(20 - gamesThisMonth, 0);
+
+    if (gamesThisMonth >= 20) {
+      this.monthlyChallenge.message = 'GOOD JOB! You have accomplished the challange!';
+    } else {
+      // this.monthlyChallenge.message = `נותרו עוד ${this.monthlyChallenge.remainingGames} משחקים כדי לעמוד באתגר החודשי. המשך כך!`;
+      this.monthlyChallenge.message = ` games this month.  ${this.monthlyChallenge.remainingGames} more to complete the chalange of 20 games per month  `;
+    }
+  }
+
+
+
+
 }
